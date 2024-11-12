@@ -24,11 +24,12 @@ import com.l2jserver.datapack.conquerablehalls.flagwar.FlagWar;
 import com.l2jserver.gameserver.instancemanager.ZoneManager;
 import com.l2jserver.gameserver.model.Location;
 import com.l2jserver.gameserver.model.zone.type.L2ResidenceHallTeleportZone;
+import com.l2jserver.gameserver.scripting.ScriptLoader;
 
 /**
  * @author BiggBoss
  */
-public final class WildBeastReserve extends FlagWar {
+public final class WildBeastReserve extends FlagWar implements ScriptLoader {
 	static {
 		ROYAL_FLAG = 35606;
 		FLAG_RED = 35607; // White flag
@@ -81,58 +82,32 @@ public final class WildBeastReserve extends FlagWar {
 		CENTER = new Location(57762, -92696, -1359, 0);
 	}
 	
-	private WildBeastReserve() {
+	public WildBeastReserve() {
 		super(WildBeastReserve.class.getSimpleName(), BEAST_FARM);
 	}
 	
 	@Override
 	public String getFlagHtml(int flag) {
-		String result = null;
-		
-		switch (flag) {
-			case 35607:
-				result = "messenger_flag1.htm";
-				break;
-			case 35608:
-				result = "messenger_flag2.htm";
-				break;
-			case 35609:
-				result = "messenger_flag3.htm";
-				break;
-			case 35610:
-				result = "messenger_flag4.htm";
-				break;
-			case 35611:
-				result = "messenger_flag5.htm";
-				break;
-		}
-		
-		return result;
+		return switch (flag) {
+			case 35607 -> "messenger_flag1.htm";
+			case 35608 -> "messenger_flag2.htm";
+			case 35609 -> "messenger_flag3.htm";
+			case 35610 -> "messenger_flag4.htm";
+			case 35611 -> "messenger_flag5.htm";
+			default -> null;
+		};
 	}
 	
 	@Override
 	public String getAllyHtml(int ally) {
-		String result = null;
-		
-		switch (ally) {
-			case 35618:
-				result = "messenger_ally1result.htm";
-				break;
-			case 35619:
-				result = "messenger_ally2result.htm";
-				break;
-			case 35620:
-				result = "messenger_ally3result.htm";
-				break;
-			case 35621:
-				result = "messenger_ally4result.htm";
-				break;
-			case 35622:
-				result = "messenger_ally5result.htm";
-				break;
-		}
-		
-		return result;
+		return switch (ally) {
+			case 35618 -> "messenger_ally1result.htm";
+			case 35619 -> "messenger_ally2result.htm";
+			case 35620 -> "messenger_ally3result.htm";
+			case 35621 -> "messenger_ally4result.htm";
+			case 35622 -> "messenger_ally5result.htm";
+			default -> null;
+		};
 	}
 	
 	@Override
@@ -140,7 +115,8 @@ public final class WildBeastReserve extends FlagWar {
 		return false;
 	}
 	
-	public static void main(String[] args) {
-		new WildBeastReserve();
+	@Override
+	public void load() {
+		// Nothing else to do
 	}
 }

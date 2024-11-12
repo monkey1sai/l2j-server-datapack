@@ -100,7 +100,7 @@ public class ReloadHandler implements ITelnetHandler {
 						File file = new File(server().getScriptRoot(), "com/l2jserver/datapack/" + questPath);
 						if (file.isFile()) {
 							try {
-								ScriptEngineManager.getInstance().compileScript(file);
+								ScriptEngineManager.getInstance().executeScript(file.toString());
 								_print.println(file.getName() + " was successfully loaded!\n");
 							} catch (Exception e) {
 								_print.println("Failed loading: " + questPath);

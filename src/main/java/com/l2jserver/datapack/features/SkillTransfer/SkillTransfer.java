@@ -33,15 +33,17 @@ import com.l2jserver.gameserver.model.holders.ItemHolder;
 import com.l2jserver.gameserver.model.itemcontainer.PcInventory;
 import com.l2jserver.gameserver.model.items.instance.L2ItemInstance;
 import com.l2jserver.gameserver.model.skills.Skill;
+import com.l2jserver.gameserver.scripting.ScriptLoader;
 import com.l2jserver.gameserver.util.Util;
 
 /**
  * Skill Transfer feature.
  * @author Zoey76
  */
-public final class SkillTransfer extends AbstractNpcAI {
+public final class SkillTransfer extends AbstractNpcAI implements ScriptLoader {
+	
 	private static final String HOLY_POMANDER = "HOLY_POMANDER_";
-	private static final ItemHolder[] PORMANDERS = {
+	private static final ItemHolder[] POMANDERS = {
 		// Cardinal (97)
 		new ItemHolder(15307, 1),
 		// Eva's Saint (105)
@@ -50,7 +52,7 @@ public final class SkillTransfer extends AbstractNpcAI {
 		new ItemHolder(15309, 4)
 	};
 	
-	private SkillTransfer() {
+	public SkillTransfer() {
 		super(SkillTransfer.class.getSimpleName(), "features");
 		setPlayerProfessionChangeId(this::onProfessionChange);
 		setPlayerProfessionCancelId(this::onProfessionCancel);
@@ -67,7 +69,7 @@ public final class SkillTransfer extends AbstractNpcAI {
 		final String name = HOLY_POMANDER + player.getClassId().getId();
 		if (!player.getVariables().getBoolean(name, false)) {
 			player.getVariables().set(name, true);
-			giveItems(player, PORMANDERS[index]);
+			giveItems(player, POMANDERS[index]);
 		}
 	}
 	
@@ -80,7 +82,7 @@ public final class SkillTransfer extends AbstractNpcAI {
 			return;
 		}
 		
-		int pomanderId = PORMANDERS[index].getId();
+		int pomanderId = POMANDERS[index].getId();
 		// remove unsused HolyPomander
 		PcInventory inv = player.getInventory();
 		for (L2ItemInstance itemI : inv.getAllItemsByItemId(pomanderId)) {
@@ -98,7 +100,7 @@ public final class SkillTransfer extends AbstractNpcAI {
 			if (index < 0) {
 				return super.onEnterWorld(player);
 			}
-			long count = PORMANDERS[index].getCount() - player.getInventory().getInventoryItemCount(PORMANDERS[index].getId(), -1, false);
+			long count = POMANDERS[index].getCount() - player.getInventory().getInventoryItemCount(POMANDERS[index].getId(), -1, false);
 			for (Skill sk : player.getAllSkills()) {
 				for (L2SkillLearn s : SkillTreesData.getInstance().getTransferSkillTree(player.getClassId()).values()) {
 					if (s.getSkillId() == sk.getId()) {
@@ -120,7 +122,7 @@ public final class SkillTransfer extends AbstractNpcAI {
 			}
 			// SkillTransfer or HolyPomander missing
 			if (count > 0) {
-				player.getInventory().addItem("[HolyPomander- missing]", PORMANDERS[index].getId(), count, player, null);
+				player.getInventory().addItem("[HolyPomander- missing]", POMANDERS[index].getId(), count, player, null);
 			}
 		}
 		return super.onEnterWorld(player);
@@ -135,7 +137,8 @@ public final class SkillTransfer extends AbstractNpcAI {
 		};
 	}
 	
-	public static void main(String[] args) {
-		new SkillTransfer();
+	@Override
+	public void load() {
+		// Nothing else to do
 	}
 }

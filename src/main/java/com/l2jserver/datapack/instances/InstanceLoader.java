@@ -51,12 +51,13 @@ import com.l2jserver.datapack.instances.PailakaDevilsLegacy.PailakaDevilsLegacy;
 import com.l2jserver.datapack.instances.PailakaSongOfIceAndFire.PailakaSongOfIceAndFire;
 import com.l2jserver.datapack.instances.SanctumOftheLordsOfDawn.SanctumOftheLordsOfDawn;
 import com.l2jserver.datapack.instances.SecretAreaInTheKeucereusFortress1.SecretAreaInTheKeucereusFortress1;
+import com.l2jserver.gameserver.scripting.ScriptLoader;
 
 /**
  * Instance class-loader.
  * @author FallenAngel
  */
-public final class InstanceLoader {
+public final class InstanceLoader implements ScriptLoader.InstanceScriptLoader {
 	private static final Logger LOG = LoggerFactory.getLogger(InstanceLoader.class);
 	
 	private static final Class<?>[] SCRIPTS = {
@@ -92,7 +93,8 @@ public final class InstanceLoader {
 		SecretAreaInTheKeucereusFortress1.class,
 	};
 	
-	public static void main(String[] args) {
+	@Override
+	public void load() {
 		int n = 0;
 		for (var script : SCRIPTS) {
 			try {
@@ -102,6 +104,6 @@ public final class InstanceLoader {
 				LOG.warn("Failed loading {}!", script.getSimpleName(), ex);
 			}
 		}
-		LOG.info("Loaded {} instnaces.", n);
+		LOG.info("Loaded {} instances.", n);
 	}
 }

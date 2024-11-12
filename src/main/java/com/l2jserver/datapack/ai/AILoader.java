@@ -63,6 +63,8 @@ import com.l2jserver.datapack.ai.group_template.TurekOrcs;
 import com.l2jserver.datapack.ai.group_template.VarkaKetra;
 import com.l2jserver.datapack.ai.group_template.WarriorFishingBlock;
 import com.l2jserver.datapack.ai.individual.Anais;
+import com.l2jserver.datapack.ai.individual.Antharas.Antharas;
+import com.l2jserver.datapack.ai.individual.Baium.Baium;
 import com.l2jserver.datapack.ai.individual.Ballista;
 import com.l2jserver.datapack.ai.individual.Beleth;
 import com.l2jserver.datapack.ai.individual.BlackdaggerWing;
@@ -92,13 +94,11 @@ import com.l2jserver.datapack.ai.individual.QueenShyeed;
 import com.l2jserver.datapack.ai.individual.RagnaOrcCommander;
 import com.l2jserver.datapack.ai.individual.RagnaOrcHero;
 import com.l2jserver.datapack.ai.individual.RagnaOrcSeer;
+import com.l2jserver.datapack.ai.individual.Sailren.Sailren;
 import com.l2jserver.datapack.ai.individual.ShadowSummoner;
 import com.l2jserver.datapack.ai.individual.SinEater;
 import com.l2jserver.datapack.ai.individual.SinWardens;
 import com.l2jserver.datapack.ai.individual.Valakas;
-import com.l2jserver.datapack.ai.individual.Antharas.Antharas;
-import com.l2jserver.datapack.ai.individual.Baium.Baium;
-import com.l2jserver.datapack.ai.individual.Sailren.Sailren;
 import com.l2jserver.datapack.ai.individual.Venom.Venom;
 import com.l2jserver.datapack.ai.npc.Abercrombie.Abercrombie;
 import com.l2jserver.datapack.ai.npc.AdventureGuildsman.AdventureGuildsman;
@@ -216,14 +216,14 @@ import com.l2jserver.datapack.village_master.KamaelChange1.KamaelChange1;
 import com.l2jserver.datapack.village_master.KamaelChange2.KamaelChange2;
 import com.l2jserver.datapack.village_master.OrcChange1.OrcChange1;
 import com.l2jserver.datapack.village_master.OrcChange2.OrcChange2;
+import com.l2jserver.gameserver.scripting.ScriptLoader;
 
 /**
  * AI loader.
  * @author Zoey76
  * @version 2.6.2.0
  */
-public class AILoader {
-	
+public final class AILoader implements ScriptLoader.AIScriptLoader {
 	private static final Logger LOG = LoggerFactory.getLogger(AILoader.class);
 	
 	private static final Class<?>[] SCRIPTS = {
@@ -430,7 +430,8 @@ public class AILoader {
 		OrcChange2.class
 	};
 	
-	public static void main(String[] args) {
+	@Override
+	public void load() {
 		int n = 0;
 		for (var ai : SCRIPTS) {
 			try {
@@ -441,6 +442,5 @@ public class AILoader {
 			}
 		}
 		LOG.info("Loaded {} AI scripts.", n);
-		
 	}
 }

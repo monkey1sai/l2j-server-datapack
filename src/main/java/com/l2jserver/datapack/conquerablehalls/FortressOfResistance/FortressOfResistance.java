@@ -31,17 +31,18 @@ import com.l2jserver.gameserver.model.actor.L2Npc;
 import com.l2jserver.gameserver.model.actor.instance.L2PcInstance;
 import com.l2jserver.gameserver.model.entity.clanhall.ClanHallSiegeEngine;
 import com.l2jserver.gameserver.network.serverpackets.NpcHtmlMessage;
+import com.l2jserver.gameserver.scripting.ScriptLoader;
 import com.l2jserver.gameserver.util.Util;
 
 /**
  * Fortress of Resistance clan hall siege Script.
  * @author BiggBoss
  */
-public final class FortressOfResistance extends ClanHallSiegeEngine {
-	private final int MESSENGER = 35382;
-	private final int BLOODY_LORD_NURKA = 35375;
+public final class FortressOfResistance extends ClanHallSiegeEngine implements ScriptLoader {
+	private static final int MESSENGER = 35382;
+	private static final int BLOODY_LORD_NURKA = 35375;
 	
-	private final Location[] NURKA_COORDS = {
+	private static final Location[] NURKA_COORDS = {
 		new Location(45109, 112124, -1900), // 30%
 		new Location(47653, 110816, -2110), // 40%
 		new Location(47247, 109396, -2000)
@@ -52,7 +53,7 @@ public final class FortressOfResistance extends ClanHallSiegeEngine {
 	private final Map<Integer, Long> _damageToNurka = new HashMap<>();
 	private NpcHtmlMessage _messengerMsg;
 	
-	private FortressOfResistance() {
+	public FortressOfResistance() {
 		super(FortressOfResistance.class.getSimpleName(), "conquerablehalls", FORTRESS_RESSISTANCE);
 		bindFirstTalk(MESSENGER);
 		bindKill(BLOODY_LORD_NURKA);
@@ -156,7 +157,8 @@ public final class FortressOfResistance extends ClanHallSiegeEngine {
 		buildMessengerMessage();
 	}
 	
-	public static void main(String[] args) {
-		new FortressOfResistance();
+	@Override
+	public void load() {
+		// Nothing else to do
 	}
 }

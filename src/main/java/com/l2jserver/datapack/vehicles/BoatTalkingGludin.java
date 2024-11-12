@@ -246,13 +246,4 @@ public class BoatTalkingGludin implements Runnable {
 			LOG.warn(e.getMessage());
 		}
 	}
-	
-	public static void main(String[] args) {
-		final L2BoatInstance boat = BoatManager.getInstance().getNewBoat(1, -96622, 261660, -3610, 32768);
-		if (boat != null) {
-			boat.registerEngine(new BoatTalkingGludin(boat));
-			boat.runEngine(180000);
-			BoatManager.getInstance().dockShip(BoatManager.TALKING_ISLAND, true);
-		}
-	}
 }

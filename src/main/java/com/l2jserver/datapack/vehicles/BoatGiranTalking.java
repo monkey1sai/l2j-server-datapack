@@ -253,12 +253,4 @@ public class BoatGiranTalking implements Runnable {
 			LOG.warn(e.getMessage());
 		}
 	}
-	
-	public static void main(String[] args) {
-		final L2BoatInstance boat = BoatManager.getInstance().getNewBoat(2, 48950, 190613, -3610, 60800);
-		if (boat != null) {
-			boat.registerEngine(new BoatGiranTalking(boat));
-			boat.runEngine(180000);
-		}
-	}
 }

@@ -37,13 +37,14 @@ import com.l2jserver.gameserver.model.skills.AbnormalType;
 import com.l2jserver.gameserver.model.skills.Skill;
 import com.l2jserver.gameserver.network.serverpackets.CreatureSay;
 import com.l2jserver.gameserver.network.serverpackets.NpcHtmlMessage;
+import com.l2jserver.gameserver.scripting.ScriptLoader;
 import com.l2jserver.gameserver.util.Broadcast;
 
 /**
  * Race event.
  * @author Gnacik
  */
-public final class Race extends Event {
+public final class Race extends Event implements ScriptLoader {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(Race.class);
 	
@@ -106,7 +107,7 @@ public final class Race extends Event {
 	};
 	// @formatter:on
 	
-	private Race() {
+	public Race() {
 		super(Race.class.getSimpleName(), "custom/events");
 		bindStartNpc(START_NPC);
 		bindFirstTalk(START_NPC);
@@ -344,7 +345,8 @@ public final class Race extends Event {
 		eventStop();
 	}
 	
-	public static void main(String[] args) {
-		new Race();
+	@Override
+	public void load() {
+		// Nothing else to do
 	}
 }

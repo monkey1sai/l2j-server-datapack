@@ -32,20 +32,21 @@ import com.l2jserver.gameserver.model.actor.instance.L2PcInstance;
 import com.l2jserver.gameserver.model.entity.clanhall.ClanHallSiegeEngine;
 import com.l2jserver.gameserver.network.NpcStringId;
 import com.l2jserver.gameserver.network.clientpackets.Say2;
+import com.l2jserver.gameserver.scripting.ScriptLoader;
 
 /**
  * Devastated Castle clan hall siege script.
  * @author BiggBoss
  */
-public final class DevastatedCastle extends ClanHallSiegeEngine {
+public final class DevastatedCastle extends ClanHallSiegeEngine implements ScriptLoader {
 	private static final int GUSTAV = 35410;
 	private static final int MIKHAIL = 35409;
 	private static final int DIETRICH = 35408;
 	private static final double GUSTAV_TRIGGER_HP = NpcData.getInstance().getTemplate(GUSTAV).getBaseHpMax() / 12;
 	
-	private static Map<Integer, Integer> _damageToGustav = new HashMap<>();
+	private static final Map<Integer, Integer> _damageToGustav = new HashMap<>();
 	
-	private DevastatedCastle() {
+	public DevastatedCastle() {
 		super(DevastatedCastle.class.getSimpleName(), "conquerablehalls", DEVASTATED_CASTLE);
 		bindKill(GUSTAV);
 		bindSpawn(MIKHAIL);
@@ -123,7 +124,8 @@ public final class DevastatedCastle extends ClanHallSiegeEngine {
 		return ClanTable.getInstance().getClan(damagest);
 	}
 	
-	public static void main(String[] args) {
-		new DevastatedCastle();
+	@Override
+	public void load() {
+		// Nothing else to do
 	}
 }

@@ -76,26 +76,11 @@ public final class TeleporterService extends CustomServiceScript {
 		return script;
 	}
 	
-	public static void main(String[] args) {
-		if (!teleporterService().enable()) {
-			LOG.info("Disabled.");
-			return;
-		}
-		
-		LOG.info("Loading...");
-		try {
-			config = new TeleporterConfig();
-			script = new TeleporterService();
-		} catch (Exception e) {
-			LOG.error("Failed to load!", e);
-			return;
-		}
-		
-		getConfig().registerNpcs(script);
-	}
-	
-	public TeleporterService() {
+	public TeleporterService(TeleporterConfig config) {
 		super(SCRIPT_NAME);
+		
+		TeleporterService.config = config;
+		TeleporterService.script = this;
 		
 		BypassHandler.getInstance().registerHandler(TeleporterServiceBypassHandler.getInstance());
 		
@@ -103,6 +88,8 @@ public final class TeleporterService extends CustomServiceScript {
 			VoicedCommandHandler.getInstance().registerHandler(TeleporterServiceVoicedCommandHandler.getInstance());
 			ItemHandler.getInstance().registerHandler(TeleporterServiceItemHandler.getInstance());
 		}
+		
+		TeleporterService.config.registerNpcs(this);
 	}
 	
 	@Override

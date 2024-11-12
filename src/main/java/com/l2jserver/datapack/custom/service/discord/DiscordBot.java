@@ -33,6 +33,7 @@ import com.l2jserver.datapack.custom.service.discord.commands.moderation.Restart
 import com.l2jserver.datapack.custom.service.discord.commands.moderation.ShutdownCommand;
 import com.l2jserver.datapack.custom.service.discord.listeners.BasicListener;
 import com.l2jserver.datapack.custom.service.discord.listeners.ChatListener;
+import com.l2jserver.gameserver.scripting.ScriptLoader;
 
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.JDA;
@@ -48,7 +49,7 @@ import net.dv8tion.jda.api.utils.MemberCachePolicy;
  * @author Stalitsa
  * @version 2.6.2.0
  */
-public class DiscordBot {
+public class DiscordBot implements ScriptLoader {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(DiscordBot.class);
 	
@@ -65,7 +66,8 @@ public class DiscordBot {
 		new BasicListener(),
 	};
 	
-	public static void main(String[] args) {
+	@Override
+	public void load() {
 		if (!discord().enableBot()) {
 			LOG.info("Discord Bot is Disabled.");
 			return;
@@ -83,7 +85,7 @@ public class DiscordBot {
 				.awaitReady(); // Blocking guarantees that JDA will be completely loaded.
 			jda.getPresence().setPresence(OnlineStatus.ONLINE, Activity.listening(": -- L2J"));
 			LOG.info("Discord Bot Started.");
-		} catch (InterruptedException ex) {
+		} catch (Exception ex) {
 			LOG.error("Failed to start the Discord Bot!", ex);
 		}
 	}

@@ -31,13 +31,14 @@ import com.l2jserver.gameserver.model.skills.CommonSkill;
 import com.l2jserver.gameserver.model.skills.Skill;
 import com.l2jserver.gameserver.network.serverpackets.MagicSkillUse;
 import com.l2jserver.gameserver.network.serverpackets.NpcHtmlMessage;
+import com.l2jserver.gameserver.scripting.ScriptLoader;
 import com.l2jserver.gameserver.util.Broadcast;
 
 /**
  * Wedding AI.
  * @author Zoey76
  */
-public final class Wedding extends AbstractNpcAI {
+public final class Wedding extends AbstractNpcAI implements ScriptLoader {
 	// NPC
 	private static final int MANAGER_ID = 50007;
 	// Item
@@ -175,7 +176,8 @@ public final class Wedding extends AbstractNpcAI {
 		return true;
 	}
 	
-	public static void main(String[] args) {
-		new Wedding();
+	@Override
+	public void load() {
+		// Nothing else to do
 	}
 }

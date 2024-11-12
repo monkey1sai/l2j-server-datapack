@@ -24,11 +24,12 @@ import com.l2jserver.datapack.conquerablehalls.flagwar.FlagWar;
 import com.l2jserver.gameserver.instancemanager.ZoneManager;
 import com.l2jserver.gameserver.model.Location;
 import com.l2jserver.gameserver.model.zone.type.L2ResidenceHallTeleportZone;
+import com.l2jserver.gameserver.scripting.ScriptLoader;
 
 /**
  * @author BiggBoss
  */
-public final class BanditStronghold extends FlagWar {
+public final class BanditStronghold extends FlagWar implements ScriptLoader {
 	static {
 		ROYAL_FLAG = 35422;
 		FLAG_RED = 35423;
@@ -81,61 +82,36 @@ public final class BanditStronghold extends FlagWar {
 		CENTER = new Location(82882, -16280, -1894, 0);
 	}
 	
-	private BanditStronghold() {
+	public BanditStronghold() {
 		super(BanditStronghold.class.getSimpleName(), BANDIT_STRONGHOLD);
 	}
 	
 	@Override
 	public String getFlagHtml(int flag) {
-		String result = null;
-		
-		switch (flag) {
-			case 35423:
-				result = "messenger_flag1.htm";
-				break;
-			case 35424:
-				result = "messenger_flag2.htm";
-				break;
-			case 35425:
-				result = "messenger_flag3.htm";
-				break;
-			case 35426:
-				result = "messenger_flag4.htm";
-				break;
-			case 35427:
-				result = "messenger_flag5.htm";
-				break;
-		}
-		
-		return result;
+		return switch (flag) {
+			case 35423 -> "messenger_flag1.htm";
+			case 35424 -> "messenger_flag2.htm";
+			case 35425 -> "messenger_flag3.htm";
+			case 35426 -> "messenger_flag4.htm";
+			case 35427 -> "messenger_flag5.htm";
+			default -> null;
+		};
 	}
 	
 	@Override
 	public String getAllyHtml(int ally) {
-		String result = null;
-		
-		switch (ally) {
-			case 35428:
-				result = "messenger_ally1result.htm";
-				break;
-			case 35429:
-				result = "messenger_ally2result.htm";
-				break;
-			case 35430:
-				result = "messenger_ally3result.htm";
-				break;
-			case 35431:
-				result = "messenger_ally4result.htm";
-				break;
-			case 35432:
-				result = "messenger_ally5result.htm";
-				break;
-		}
-		
-		return result;
+		return switch (ally) {
+			case 35428 -> "messenger_ally1result.htm";
+			case 35429 -> "messenger_ally2result.htm";
+			case 35430 -> "messenger_ally3result.htm";
+			case 35431 -> "messenger_ally4result.htm";
+			case 35432 -> "messenger_ally5result.htm";
+			default -> null;
+		};
 	}
 	
-	public static void main(String[] args) {
-		new BanditStronghold();
+	@Override
+	public void load() {
+		// Nothing else to do
 	}
 }

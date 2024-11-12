@@ -25,9 +25,9 @@ import com.l2jserver.datapack.gracia.ai.DraconianTroops;
 import com.l2jserver.datapack.gracia.ai.EnergySeeds;
 import com.l2jserver.datapack.gracia.ai.Lindvior;
 import com.l2jserver.datapack.gracia.ai.Maguen;
-import com.l2jserver.datapack.gracia.ai.StarStones;
 import com.l2jserver.datapack.gracia.ai.SeedOfAnnihilation.SeedOfAnnihilation;
 import com.l2jserver.datapack.gracia.ai.SeedOfDestruction.Defence;
+import com.l2jserver.datapack.gracia.ai.StarStones;
 import com.l2jserver.datapack.gracia.ai.npc.Allenos.Allenos;
 import com.l2jserver.datapack.gracia.ai.npc.FortuneTelling.FortuneTelling;
 import com.l2jserver.datapack.gracia.ai.npc.GeneralDilios.GeneralDilios;
@@ -38,24 +38,24 @@ import com.l2jserver.datapack.gracia.ai.npc.Seyo.Seyo;
 import com.l2jserver.datapack.gracia.ai.npc.TemporaryTeleporter.TemporaryTeleporter;
 import com.l2jserver.datapack.gracia.ai.npc.ZealotOfShilen.ZealotOfShilen;
 import com.l2jserver.datapack.gracia.instances.SecretArea.SecretArea;
-import com.l2jserver.datapack.gracia.instances.SeedOfDestruction.Stage1;
 import com.l2jserver.datapack.gracia.instances.SeedOfDestruction.MountedTroops.ChamblainsMountedTroop;
 import com.l2jserver.datapack.gracia.instances.SeedOfDestruction.MountedTroops.GreatWarriorsMountedTroop;
 import com.l2jserver.datapack.gracia.instances.SeedOfDestruction.MountedTroops.SoldiersMountedTroop;
 import com.l2jserver.datapack.gracia.instances.SeedOfDestruction.MountedTroops.WarriorsMountedTroop;
+import com.l2jserver.datapack.gracia.instances.SeedOfDestruction.Stage1;
 import com.l2jserver.datapack.gracia.instances.SeedOfInfinity.HallOfSuffering.HallOfSuffering;
 import com.l2jserver.datapack.gracia.vehicles.AirShipGludioGracia.AirShipGludioGracia;
 import com.l2jserver.datapack.gracia.vehicles.KeucereusNorthController.KeucereusNorthController;
 import com.l2jserver.datapack.gracia.vehicles.KeucereusSouthController.KeucereusSouthController;
 import com.l2jserver.datapack.gracia.vehicles.SoDController.SoDController;
 import com.l2jserver.datapack.gracia.vehicles.SoIController.SoIController;
+import com.l2jserver.gameserver.scripting.ScriptLoader;
 
 /**
  * Gracia class-loader.
  * @author Pandragon
  */
-public final class GraciaLoader {
-	
+public final class GraciaLoader implements ScriptLoader.GraciaScriptLoader {
 	private static final Logger LOG = LoggerFactory.getLogger(GraciaLoader.class);
 	
 	private static final Class<?>[] SCRIPTS = {
@@ -95,7 +95,8 @@ public final class GraciaLoader {
 		SoIController.class,
 	};
 	
-	public static void main(String[] args) {
+	@Override
+	public void load() {
 		int n = 0;
 		for (var script : SCRIPTS) {
 			try {

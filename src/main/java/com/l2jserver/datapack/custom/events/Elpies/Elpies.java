@@ -32,9 +32,10 @@ import com.l2jserver.gameserver.model.actor.L2Npc;
 import com.l2jserver.gameserver.model.actor.instance.L2EventMonsterInstance;
 import com.l2jserver.gameserver.model.actor.instance.L2PcInstance;
 import com.l2jserver.gameserver.model.quest.Event;
+import com.l2jserver.gameserver.scripting.ScriptLoader;
 import com.l2jserver.gameserver.util.Broadcast;
 
-public final class Elpies extends Event {
+public final class Elpies extends Event implements ScriptLoader {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(Elpies.class);
 	
@@ -71,7 +72,7 @@ public final class Elpies extends Event {
 	private ScheduledFuture<?> _eventTask = null;
 	private final Set<L2Npc> _elpies = ConcurrentHashMap.newKeySet(ELPY_AMOUNT);
 	
-	private Elpies() {
+	public Elpies() {
 		super(Elpies.class.getSimpleName(), "custom/events");
 		bindSpawn(ELPY);
 		bindKill(ELPY);
@@ -216,7 +217,8 @@ public final class Elpies extends Event {
 		}
 	}
 	
-	public static void main(String[] args) {
-		new Elpies();
+	@Override
+	public void load() {
+		// Nothing else to do
 	}
 }

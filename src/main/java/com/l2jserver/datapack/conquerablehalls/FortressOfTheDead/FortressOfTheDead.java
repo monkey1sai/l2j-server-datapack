@@ -31,17 +31,18 @@ import com.l2jserver.gameserver.model.actor.instance.L2PcInstance;
 import com.l2jserver.gameserver.model.entity.clanhall.ClanHallSiegeEngine;
 import com.l2jserver.gameserver.network.NpcStringId;
 import com.l2jserver.gameserver.network.clientpackets.Say2;
+import com.l2jserver.gameserver.scripting.ScriptLoader;
 
 /**
  * Fortress of the Dead clan hall siege script.
  * @author BiggBoss
  */
-public final class FortressOfTheDead extends ClanHallSiegeEngine {
+public final class FortressOfTheDead extends ClanHallSiegeEngine implements ScriptLoader {
 	private static final int LIDIA = 35629;
 	private static final int ALFRED = 35630;
 	private static final int GISELLE = 35631;
 	
-	private static Map<Integer, Integer> _damageToLidia = new HashMap<>();
+	private static final Map<Integer, Integer> _damageToLidia = new HashMap<>();
 	
 	public FortressOfTheDead() {
 		super(FortressOfTheDead.class.getSimpleName(), "conquerablehalls", FORTRESS_OF_DEAD);
@@ -142,7 +143,8 @@ public final class FortressOfTheDead extends ClanHallSiegeEngine {
 		}
 	}
 	
-	public static void main(String[] args) {
-		new FortressOfTheDead();
+	@Override
+	public void load() {
+		// Nothing else to do
 	}
 }

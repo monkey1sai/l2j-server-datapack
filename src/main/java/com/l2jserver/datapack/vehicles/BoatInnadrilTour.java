@@ -159,12 +159,4 @@ public class BoatInnadrilTour implements Runnable {
 			LOG.warn(e.getMessage());
 		}
 	}
-	
-	public static void main(String[] args) {
-		final L2BoatInstance boat = BoatManager.getInstance().getNewBoat(4, 111264, 226240, -3610, 32768);
-		if (boat != null) {
-			boat.registerEngine(new BoatInnadrilTour(boat));
-			boat.runEngine(180000);
-		}
-	}
 }

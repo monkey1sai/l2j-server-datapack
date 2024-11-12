@@ -1,18 +1,18 @@
 /*
  * Copyright © 2004-2024 L2J DataPack
- * 
+ *
  * This file is part of L2J DataPack.
- * 
+ *
  * L2J DataPack is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * L2J DataPack is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
  * General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -52,12 +52,11 @@ import com.l2jserver.gameserver.util.Util;
  * @author Gigiikun
  */
 public class TerritoryWarSuperClass extends Quest {
-	
 	private static final Logger LOG = LoggerFactory.getLogger(TerritoryWarSuperClass.class);
 	
-	private static Map<Integer, TerritoryWarSuperClass> _forTheSakeScripts = new HashMap<>();
-	private static Map<Integer, TerritoryWarSuperClass> _protectTheScripts = new HashMap<>();
-	private static Map<Integer, TerritoryWarSuperClass> _killTheScripts = new HashMap<>();
+	static Map<Integer, TerritoryWarSuperClass> _forTheSakeScripts = new HashMap<>();
+	static Map<Integer, TerritoryWarSuperClass> _protectTheScripts = new HashMap<>();
+	static Map<Integer, TerritoryWarSuperClass> _killTheScripts = new HashMap<>();
 	
 	// "For the Sake of the Territory ..." quests variables
 	public int CATAPULT_ID;
@@ -102,7 +101,7 @@ public class TerritoryWarSuperClass extends Quest {
 				GlobalVariablesManager.getInstance().set(TerritoryWarManager.GLOBAL_VARIABLE, cal.getTimeInMillis());
 			}
 			TerritoryWarManager.getInstance().setTWStartTimeInMillis(cal.getTimeInMillis());
-			LOG.info("{}: Siege date: {}", getClass().getSimpleName(), cal.getTime());
+			LOG.info("Siege date: {}", cal.getTime());
 		}
 	}
 	
@@ -414,64 +413,6 @@ public class TerritoryWarSuperClass extends Quest {
 					_sfh.unset("kills");
 				}
 			}
-		}
-	}
-	
-	public static void main(String[] args) {
-		// initialize superclass
-		new TerritoryWarSuperClass(-1, TerritoryWarSuperClass.class.getSimpleName(), "Territory War Superclass");
-		
-		// initialize subclasses
-		// "For The Sake" quests
-		TerritoryWarSuperClass gludio = new Q00717_ForTheSakeOfTheTerritoryGludio();
-		_forTheSakeScripts.put(gludio.TERRITORY_ID, gludio);
-		TerritoryWarSuperClass dion = new Q00718_ForTheSakeOfTheTerritoryDion();
-		_forTheSakeScripts.put(dion.TERRITORY_ID, dion);
-		TerritoryWarSuperClass giran = new Q00719_ForTheSakeOfTheTerritoryGiran();
-		_forTheSakeScripts.put(giran.TERRITORY_ID, giran);
-		TerritoryWarSuperClass oren = new Q00720_ForTheSakeOfTheTerritoryOren();
-		_forTheSakeScripts.put(oren.TERRITORY_ID, oren);
-		TerritoryWarSuperClass aden = new Q00721_ForTheSakeOfTheTerritoryAden();
-		_forTheSakeScripts.put(aden.TERRITORY_ID, aden);
-		TerritoryWarSuperClass innadril = new Q00722_ForTheSakeOfTheTerritoryInnadril();
-		_forTheSakeScripts.put(innadril.TERRITORY_ID, innadril);
-		TerritoryWarSuperClass goddard = new Q00723_ForTheSakeOfTheTerritoryGoddard();
-		_forTheSakeScripts.put(goddard.TERRITORY_ID, goddard);
-		TerritoryWarSuperClass rune = new Q00724_ForTheSakeOfTheTerritoryRune();
-		_forTheSakeScripts.put(rune.TERRITORY_ID, rune);
-		TerritoryWarSuperClass schuttgart = new Q00725_ForTheSakeOfTheTerritorySchuttgart();
-		_forTheSakeScripts.put(schuttgart.TERRITORY_ID, schuttgart);
-		// "Protect the" quests
-		TerritoryWarSuperClass catapult = new Q00729_ProtectTheTerritoryCatapult();
-		_protectTheScripts.put(catapult.getId(), catapult);
-		TerritoryWarSuperClass supplies = new Q00730_ProtectTheSuppliesSafe();
-		_protectTheScripts.put(supplies.getId(), supplies);
-		TerritoryWarSuperClass military = new Q00731_ProtectTheMilitaryAssociationLeader();
-		_protectTheScripts.put(military.getId(), military);
-		TerritoryWarSuperClass religious = new Q00732_ProtectTheReligiousAssociationLeader();
-		_protectTheScripts.put(religious.getId(), religious);
-		TerritoryWarSuperClass economic = new Q00733_ProtectTheEconomicAssociationLeader();
-		_protectTheScripts.put(economic.getId(), economic);
-		// "Kill" quests
-		TerritoryWarSuperClass knights = new Q00734_PierceThroughAShield();
-		for (int i : knights.CLASS_IDS) {
-			_killTheScripts.put(i, knights);
-		}
-		TerritoryWarSuperClass warriors = new Q00735_MakeSpearsDull();
-		for (int i : warriors.CLASS_IDS) {
-			_killTheScripts.put(i, warriors);
-		}
-		TerritoryWarSuperClass wizards = new Q00736_WeakenTheMagic();
-		for (int i : wizards.CLASS_IDS) {
-			_killTheScripts.put(i, wizards);
-		}
-		TerritoryWarSuperClass priests = new Q00737_DenyBlessings();
-		for (int i : priests.CLASS_IDS) {
-			_killTheScripts.put(i, priests);
-		}
-		TerritoryWarSuperClass keys = new Q00738_DestroyKeyTargets();
-		for (int i : keys.CLASS_IDS) {
-			_killTheScripts.put(i, keys);
 		}
 	}
 }

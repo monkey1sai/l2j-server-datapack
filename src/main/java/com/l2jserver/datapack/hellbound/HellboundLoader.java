@@ -61,13 +61,13 @@ import com.l2jserver.gameserver.handler.AdminCommandHandler;
 import com.l2jserver.gameserver.handler.IAdminCommandHandler;
 import com.l2jserver.gameserver.handler.IVoicedCommandHandler;
 import com.l2jserver.gameserver.handler.VoicedCommandHandler;
+import com.l2jserver.gameserver.scripting.ScriptLoader;
 
 /**
  * Hellbound loader.
  * @author Zoey76
  */
-public final class HellboundLoader {
-	
+public final class HellboundLoader implements ScriptLoader.HellboundScriptLoader {
 	private static final Logger LOG = LoggerFactory.getLogger(HellboundLoader.class);
 	
 	private static final Class<?>[] SCRIPTS = {
@@ -112,7 +112,8 @@ public final class HellboundLoader {
 		RankuFloor.class,
 	};
 	
-	public static void main(String[] args) {
+	@Override
+	public void load() {
 		// Data
 		HellboundPointData.getInstance();
 		HellboundSpawns.getInstance();

@@ -108,7 +108,7 @@ public class AdminQuest implements IAdminCommandHandler {
 				// Reloading by full path
 				if (file.isFile()) {
 					try {
-						ScriptEngineManager.getInstance().executeScript(file);
+						ScriptEngineManager.getInstance().executeScript(file.toString());
 						
 						// This part should be called only when the script is successfully loaded.
 						activeChar.sendMessage("Script Successfully Loaded.");

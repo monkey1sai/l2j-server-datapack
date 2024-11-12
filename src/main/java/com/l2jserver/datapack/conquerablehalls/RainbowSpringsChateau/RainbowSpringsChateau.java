@@ -57,6 +57,7 @@ import com.l2jserver.gameserver.model.items.instance.L2ItemInstance;
 import com.l2jserver.gameserver.model.skills.Skill;
 import com.l2jserver.gameserver.network.clientpackets.Say2;
 import com.l2jserver.gameserver.network.serverpackets.NpcSay;
+import com.l2jserver.gameserver.scripting.ScriptLoader;
 import com.l2jserver.gameserver.util.Broadcast;
 import com.l2jserver.gameserver.util.Util;
 
@@ -64,7 +65,7 @@ import com.l2jserver.gameserver.util.Util;
  * Rainbow Springs Chateau clan hall siege script.
  * @author BiggBoss
  */
-public final class RainbowSpringsChateau extends ClanHallSiegeEngine {
+public final class RainbowSpringsChateau extends ClanHallSiegeEngine implements ScriptLoader {
 	protected static class SetFinalAttackers implements Runnable {
 		@Override
 		public void run() {
@@ -734,7 +735,8 @@ public final class RainbowSpringsChateau extends ClanHallSiegeEngine {
 		_nextSiege = ThreadPoolManager.getInstance().scheduleGeneral(new SetFinalAttackers(), _rainbow.getNextSiegeTime());
 	}
 	
-	public static void main(String[] args) {
-		new RainbowSpringsChateau();
+	@Override
+	public void load() {
+		// Nothing else to do
 	}
 }

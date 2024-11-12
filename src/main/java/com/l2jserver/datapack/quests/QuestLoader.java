@@ -523,13 +523,14 @@ import com.l2jserver.datapack.quests.Q10502_FreyaEmbroideredSoulCloak.Q10502_Fre
 import com.l2jserver.datapack.quests.Q10503_FrintezzaEmbroideredSoulCloak.Q10503_FrintezzaEmbroideredSoulCloak;
 import com.l2jserver.datapack.quests.Q10504_JewelOfAntharas.Q10504_JewelOfAntharas;
 import com.l2jserver.datapack.quests.Q10505_JewelOfValakas.Q10505_JewelOfValakas;
+import com.l2jserver.gameserver.scripting.ScriptLoader;
 
 /**
  * Quest loader.
  * @author NosBit
  * @author Zoey76
  */
-public class QuestLoader {
+public final class QuestLoader implements ScriptLoader.QuestScriptLoader {
 	private static final Logger LOG = LoggerFactory.getLogger(QuestLoader.class);
 	
 	private static final Class<?>[] QUESTS = {
@@ -1037,7 +1038,8 @@ public class QuestLoader {
 		Q10505_JewelOfValakas.class
 	};
 	
-	public static void main(String[] args) {
+	@Override
+	public void load() {
 		int n = 0;
 		for (var quest : QUESTS) {
 			try {

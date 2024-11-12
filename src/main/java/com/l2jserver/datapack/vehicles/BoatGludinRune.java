@@ -285,13 +285,4 @@ public class BoatGludinRune implements Runnable {
 			LOG.warn(e.getMessage());
 		}
 	}
-	
-	public static void main(String[] args) {
-		final L2BoatInstance boat = BoatManager.getInstance().getNewBoat(3, -95686, 150514, -3610, 16723);
-		if (boat != null) {
-			boat.registerEngine(new BoatGludinRune(boat));
-			boat.runEngine(180000);
-			BoatManager.getInstance().dockShip(BoatManager.GLUDIN_HARBOR, true);
-		}
-	}
 }

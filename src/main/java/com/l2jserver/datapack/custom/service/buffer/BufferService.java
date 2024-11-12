@@ -56,22 +56,9 @@ import com.l2jserver.gameserver.taskmanager.AttackStanceTaskManager;
  */
 public final class BufferService extends CustomServiceScript {
 	
-	private static final Logger LOG = LoggerFactory.getLogger(BufferService.class);
-	
 	public static final String SCRIPT_NAME = "buffer";
 	
 	public static final Path SCRIPT_PATH = Paths.get(SCRIPT_COLLECTION, SCRIPT_NAME);
-	
-	public static void main(String[] args) {
-		if (!Configuration.bufferService().enable()) {
-			LOG.info("Disabled.");
-			return;
-		}
-		
-		LOG.info("Loading...");
-		
-		BufferServiceRepository.getInstance().getConfig().registerNpcs(getInstance());
-	}
 	
 	private static final Map<Integer, Long> LAST_PLAYABLES_HEAL_TIME = new ConcurrentHashMap<>();
 	
@@ -79,7 +66,7 @@ public final class BufferService extends CustomServiceScript {
 	private static final Map<Integer, String> ACTIVE_PLAYER_CATEGORIES = new ConcurrentHashMap<>();
 	private static final Map<Integer, String> ACTIVE_PLAYER_TARGETS = new ConcurrentHashMap<>();
 	
-	BufferService() {
+	private BufferService() {
 		super(SCRIPT_NAME);
 		
 		BypassHandler.getInstance().registerHandler(BufferServiceBypassHandler.getInstance());
@@ -629,6 +616,6 @@ public final class BufferService extends CustomServiceScript {
 	}
 	
 	private static final class SingletonHolder {
-		protected static final BufferService INSTANCE = new BufferService();
+		private static final BufferService INSTANCE = new BufferService();
 	}
 }

@@ -144,13 +144,4 @@ public class BoatRunePrimeval implements Runnable {
 			LOG.warn(e.getMessage());
 		}
 	}
-	
-	public static void main(String[] args) {
-		final L2BoatInstance boat = BoatManager.getInstance().getNewBoat(5, 34381, -37680, -3610, 40785);
-		if (boat != null) {
-			boat.registerEngine(new BoatRunePrimeval(boat));
-			boat.runEngine(180000);
-			BoatManager.getInstance().dockShip(BoatManager.RUNE_HARBOR, true);
-		}
-	}
 }

@@ -29,12 +29,13 @@ import com.l2jserver.gameserver.model.actor.instance.L2PcInstance;
 import com.l2jserver.gameserver.model.entity.TvTEvent;
 import com.l2jserver.gameserver.model.olympiad.OlympiadManager;
 import com.l2jserver.gameserver.network.serverpackets.NpcHtmlMessage;
+import com.l2jserver.gameserver.scripting.ScriptLoader;
 
 /**
  * TvT Manager AI.
  * @author Zoey76
  */
-public final class TvTManager extends AbstractNpcAI implements IVoicedCommandHandler {
+public final class TvTManager extends AbstractNpcAI implements IVoicedCommandHandler, ScriptLoader {
 	private static final int MANAGER_ID = 70010;
 	private static final String[] COMMANDS = {
 		"tvt",
@@ -173,7 +174,8 @@ public final class TvTManager extends AbstractNpcAI implements IVoicedCommandHan
 		return COMMANDS;
 	}
 	
-	public static void main(String[] args) {
-		new TvTManager();
+	@Override
+	public void load() {
+		// Nothing else to do
 	}
 }

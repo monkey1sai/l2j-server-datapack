@@ -33,6 +33,7 @@ import com.l2jserver.gameserver.model.items.instance.L2ItemInstance;
 import com.l2jserver.gameserver.model.quest.Quest;
 import com.l2jserver.gameserver.model.quest.QuestState;
 import com.l2jserver.gameserver.model.skills.Skill;
+import com.l2jserver.gameserver.scripting.ScriptLoader;
 import com.l2jserver.gameserver.util.Util;
 
 /**
@@ -40,7 +41,7 @@ import com.l2jserver.gameserver.util.Util;
  * TODO: Rewrite.
  * @author DS
  */
-public final class SubClassSkills extends Quest {
+public final class SubClassSkills extends Quest implements ScriptLoader {
 	// arrays must be sorted
 	// @formatter:off
 	private static final int[] _allCertSkillIds =
@@ -88,7 +89,7 @@ public final class SubClassSkills extends Quest {
 		"ClassAbility80-"
 	};
 	
-	private SubClassSkills() {
+	public SubClassSkills() {
 		super(-1, SubClassSkills.class.getSimpleName(), "custom");
 		setOnEnterWorld(true);
 	}
@@ -272,7 +273,8 @@ public final class SubClassSkills extends Quest {
 		return tmp;
 	}
 	
-	public static void main(String[] args) {
-		new SubClassSkills();
+	@Override
+	public void load() {
+		// Nothing else to do
 	}
 }
