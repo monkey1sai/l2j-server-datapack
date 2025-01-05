@@ -62,6 +62,17 @@ import com.l2jserver.datapack.ai.group_template.TreasureChest;
 import com.l2jserver.datapack.ai.group_template.TurekOrcs;
 import com.l2jserver.datapack.ai.group_template.VarkaKetra;
 import com.l2jserver.datapack.ai.group_template.WarriorFishingBlock;
+import com.l2jserver.datapack.ai.group_template.festival.SSQEventBomb;
+import com.l2jserver.datapack.ai.group_template.festival.SSQEventPartyLeader;
+import com.l2jserver.datapack.ai.group_template.festival.BattleHeavyTrp;
+import com.l2jserver.datapack.ai.group_template.festival.BattleHeavyTrpEx;
+import com.l2jserver.datapack.ai.group_template.festival.BattleLastTrp;
+import com.l2jserver.datapack.ai.group_template.festival.BattleLastTrpEx;
+import com.l2jserver.datapack.ai.group_template.festival.BattleLightTrp;
+import com.l2jserver.datapack.ai.group_template.festival.BattleLightTrpEx;
+import com.l2jserver.datapack.ai.group_template.festival.BattleMidArcher;
+import com.l2jserver.datapack.ai.group_template.festival.SSQEventPresentNpc;
+import com.l2jserver.datapack.ai.group_template.festival.SSQPartyLeader;
 import com.l2jserver.datapack.ai.individual.Anais;
 import com.l2jserver.datapack.ai.individual.Ballista;
 import com.l2jserver.datapack.ai.individual.Beleth;
@@ -124,6 +135,8 @@ import com.l2jserver.datapack.ai.npc.Dorian.Dorian;
 import com.l2jserver.datapack.ai.npc.DragonVortex.DragonVortex;
 import com.l2jserver.datapack.ai.npc.EchoCrystals.EchoCrystals;
 import com.l2jserver.datapack.ai.npc.FameManager.FameManager;
+import com.l2jserver.datapack.ai.npc.FestivalGuide.FestivalGuide;
+import com.l2jserver.datapack.ai.npc.FestivalWitch.FestivalWitch;
 import com.l2jserver.datapack.ai.npc.Fisherman.Fisherman;
 import com.l2jserver.datapack.ai.npc.ForgeOfTheGods.ForgeOfTheGods;
 import com.l2jserver.datapack.ai.npc.ForgeOfTheGods.Rooney;
@@ -251,6 +264,8 @@ public class AILoader {
 		DragonVortex.class,
 		EchoCrystals.class,
 		FameManager.class,
+		FestivalGuide.class,
+		FestivalWitch.class,
 		Fisherman.class,
 		ForgeOfTheGods.class,
 		Rooney.class,
@@ -369,6 +384,18 @@ public class AILoader {
 		TurekOrcs.class,
 		VarkaKetra.class,
 		WarriorFishingBlock.class,
+		// festival
+		SSQEventBomb.class,
+		SSQEventPartyLeader.class,
+		SSQEventPresentNpc.class,
+		SSQPartyLeader.class,
+		BattleHeavyTrp.class,
+		BattleHeavyTrpEx.class,
+		BattleLastTrp.class,
+		BattleLastTrpEx.class,
+		BattleLightTrp.class,
+		BattleLightTrpEx.class,
+		BattleMidArcher.class,
 		// Individual
 		Antharas.class,
 		Baium.class,

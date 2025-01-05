@@ -36,6 +36,7 @@ import com.l2jserver.gameserver.enums.PlayerAction;
 import com.l2jserver.gameserver.handler.IVoicedCommandHandler;
 import com.l2jserver.gameserver.instancemanager.CoupleManager;
 import com.l2jserver.gameserver.instancemanager.GrandBossManager;
+import com.l2jserver.gameserver.instancemanager.QuestManager;
 import com.l2jserver.gameserver.instancemanager.SiegeManager;
 import com.l2jserver.gameserver.model.L2World;
 import com.l2jserver.gameserver.model.Location;
@@ -57,6 +58,9 @@ import com.l2jserver.gameserver.util.Broadcast;
  */
 public class Wedding implements IVoicedCommandHandler {
 	static final Logger _log = Logger.getLogger(Wedding.class.getName());
+	
+	private static final int Q00505_BLOODOFFERING = 505;
+	
 	private static final String[] _voicedCommands = {
 		"divorce",
 		"engage",
@@ -267,7 +271,8 @@ public class Wedding implements IVoicedCommandHandler {
 			return false;
 		}
 		
-		if (activeChar.isFestivalParticipant()) {
+		final var q505 = QuestManager.getInstance().getQuest(Q00505_BLOODOFFERING);
+		if (activeChar.hasQuestState(q505.getName())) {
 			activeChar.sendMessage("You are in a festival.");
 			return false;
 		}
@@ -329,7 +334,7 @@ public class Wedding implements IVoicedCommandHandler {
 			return false;
 		}
 		
-		if (partner.isFestivalParticipant()) {
+		if (partner.hasQuestState(q505.getName())) {
 			activeChar.sendMessage("Your partner is in a festival.");
 			return false;
 		}

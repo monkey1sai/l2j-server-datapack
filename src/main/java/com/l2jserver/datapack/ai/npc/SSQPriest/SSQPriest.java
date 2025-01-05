@@ -29,6 +29,7 @@ import static com.l2jserver.gameserver.network.SystemMessageId.SEAL_STONES_ONLY_
 import static com.l2jserver.gameserver.network.SystemMessageId.SETTLE_ACCOUNT_ONLY_IN_SEAL_VALIDATION;
 import static com.l2jserver.gameserver.network.SystemMessageId.SEVENSIGNS_PARTECIPATION_DAWN;
 import static com.l2jserver.gameserver.network.SystemMessageId.SEVENSIGNS_PARTECIPATION_DUSK;
+import static com.l2jserver.gameserver.network.SystemMessageId.YOU_CAN_PROCEED_ONLY_WHEN_THE_INVENTORY_WEIGHT_IS_BELOW_80_PERCENT_AND_THE_QUANTITY_IS_BELOW_90_PERCENT;
 
 import java.util.StringTokenizer;
 
@@ -85,6 +86,7 @@ public final class SSQPriest extends AbstractNpcAI {
 	private static final int Q00505_BLOODOFFERING = 505;
 	
 	private static final double WEIGHT_LIMIT = 0.80;
+	private static final double QUEST_LIMIT = 0.90;
 	
 	private static final int THE_LORD_OF_MANORS_AGREEMENT = 5708;
 	private static final int THE_LORD_OF_MANORS_AGREEMENT_NEW = 6388;
@@ -2562,6 +2564,9 @@ public final class SSQPriest extends AbstractNpcAI {
 				MultisellData.getInstance().separateAndSend(reply, player, npc, false);
 			}
 			case 507 -> { // Festival of Darkness
+				if (player.getInventory().getSize(true) >= (player.getQuestInventoryLimit() * QUEST_LIMIT) || player.getInventory().getSize(false) >= (player.getInventoryLimit() * WEIGHT_LIMIT) || player.getCurrentLoad() >= (player.getMaxLoad() * WEIGHT_LIMIT)) {
+					player.sendPacket(YOU_CAN_PROCEED_ONLY_WHEN_THE_INVENTORY_WEIGHT_IS_BELOW_80_PERCENT_AND_THE_QUANTITY_IS_BELOW_90_PERCENT);
+				}
 				final var reply = Integer.parseInt(event.split(";")[1]);
 				switch (reply) {
 					case 1 -> {

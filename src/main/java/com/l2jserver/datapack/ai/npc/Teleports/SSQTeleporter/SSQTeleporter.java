@@ -18,6 +18,8 @@
  */
 package com.l2jserver.datapack.ai.npc.Teleports.SSQTeleporter;
 
+import static com.l2jserver.gameserver.network.SystemMessageId.YOU_CAN_PROCEED_ONLY_WHEN_THE_INVENTORY_WEIGHT_IS_BELOW_80_PERCENT_AND_THE_QUANTITY_IS_BELOW_90_PERCENT;
+
 import com.l2jserver.datapack.ai.npc.AbstractNpcAI;
 import com.l2jserver.gameserver.SevenSigns;
 import com.l2jserver.gameserver.instancemanager.QuestManager;
@@ -26,8 +28,6 @@ import com.l2jserver.gameserver.model.actor.instance.L2PcInstance;
 import com.l2jserver.gameserver.model.itemcontainer.Inventory;
 import com.l2jserver.gameserver.model.quest.Quest;
 import com.l2jserver.gameserver.model.quest.QuestState;
-import com.l2jserver.gameserver.network.SystemMessageId;
-import com.l2jserver.gameserver.network.serverpackets.NpcHtmlMessage;
 
 /**
  * SSQ Teleporters
@@ -71,12 +71,13 @@ public final class SSQTeleporter extends AbstractNpcAI {
 		31125
 	};
 	
-	private static final int Q00255_Tutorial = 255;
-	private static final int Q00635_IntoTheDimensionalRift = 635;
+	private static final int Q00255_TUTORIAL = 255;
+	private static final int Q00635_INTOTHEDIMENSIONALRIFT = 635;
 	
 	private static final int DIMENSIONAL_FRAGMENT = 7079;
 	
 	private static final double WEIGHT_LIMIT = 0.80;
+	private static final double QUEST_LIMIT = 0.90;
 	private static final int MAX_QUEST_COUNT = 40;
 	
 	public SSQTeleporter() {
@@ -84,27 +85,6 @@ public final class SSQTeleporter extends AbstractNpcAI {
 		bindStartNpc(NPCS);
 		bindTalk(NPCS);
 		bindFirstTalk(NPCS);
-	}
-	
-	private int getMemoStateId(int npcId) {
-		return switch (npcId) {
-			case 31095, 31103 -> 210000;
-			case 31096, 31104 -> 230000;
-			case 31097, 31105 -> 250000;
-			case 31098, 31106 -> 270000;
-			case 31099, 31107 -> 290000;
-			case 31100, 31108 -> 300000;
-			case 31101, 31109 -> 310000;
-			case 31102, 31110 -> 320000;
-		
-			case 31114, 31120 -> 220000;
-			case 31115, 31121 -> 240000;
-			case 31116, 31122 -> 260000;
-			case 31117, 31123 -> 280000;
-			case 31118, 31124 -> 330000;
-			case 31119, 31125 -> 340000;
-			default -> 0;
-		};
 	}
 	
 	@Override
@@ -167,20 +147,17 @@ public final class SSQTeleporter extends AbstractNpcAI {
 				}
 			}
 			case 635 -> {
-				if ((player.getInventory().getSize(false) >= (player.getInventoryLimit() * WEIGHT_LIMIT)) || (player.getCurrentLoad() >= (player.getMaxLoad() * WEIGHT_LIMIT))) {
-					player.sendPacket(SystemMessageId.INVENTORY_LESS_THAN_80_PERCENT);
+				if (player.getInventory().getSize(true) >= (player.getQuestInventoryLimit() * QUEST_LIMIT) || player.getInventory().getSize(false) >= (player.getInventoryLimit() * WEIGHT_LIMIT) || player.getCurrentLoad() >= (player.getMaxLoad() * WEIGHT_LIMIT)) {
+					player.sendPacket(YOU_CAN_PROCEED_ONLY_WHEN_THE_INVENTORY_WEIGHT_IS_BELOW_80_PERCENT_AND_THE_QUANTITY_IS_BELOW_90_PERCENT);
 					return null;
 				}
 				
 				int reply = Integer.parseInt(event.split(";")[1]);
 				switch (reply) {
 					case 1 -> {
-						if (!haveMemo(player, Q00635_IntoTheDimensionalRift)) {
+						if (!haveMemo(player, Q00635_INTOTHEDIMENSIONALRIFT)) {
 							if (player.getAllActiveQuests().size() > (MAX_QUEST_COUNT - 1)) {
-								final NpcHtmlMessage html = new NpcHtmlMessage(npc.getObjectId());
-								html.setFile(player.getHtmlPrefix(), "data/html/fullquest.html");
-								player.sendPacket(html);
-								return null;
+								return "data/html/fullquest.html";
 							}
 							if (player.getLevel() >= 20) {
 								if (getQuestItemsCount(player, DIMENSIONAL_FRAGMENT) >= 1) {
@@ -203,7 +180,7 @@ public final class SSQTeleporter extends AbstractNpcAI {
 							return "enter_necropolis1_q0635_02.htm";
 						}
 						
-						if (haveMemo(player, Q00635_IntoTheDimensionalRift)) {
+						if (haveMemo(player, Q00635_INTOTHEDIMENSIONALRIFT)) {
 							if (player.getLevel() >= 20) {
 								if (getQuestItemsCount(player, DIMENSIONAL_FRAGMENT) >= 1) {
 									int i0 = player.getLevel() / 10;
@@ -234,12 +211,12 @@ public final class SSQTeleporter extends AbstractNpcAI {
 	
 	@Override
 	public String onTalk(L2Npc npc, L2PcInstance player) {
-		if ((player.getInventory().getSize(false) >= (player.getInventoryLimit() * WEIGHT_LIMIT)) || (player.getCurrentLoad() >= (player.getMaxLoad() * WEIGHT_LIMIT))) {
-			player.sendPacket(SystemMessageId.INVENTORY_LESS_THAN_80_PERCENT);
+		if (player.getInventory().getSize(true) >= (player.getQuestInventoryLimit() * QUEST_LIMIT) || player.getInventory().getSize(false) >= (player.getInventoryLimit() * WEIGHT_LIMIT) || player.getCurrentLoad() >= (player.getMaxLoad() * WEIGHT_LIMIT)) {
+			player.sendPacket(YOU_CAN_PROCEED_ONLY_WHEN_THE_INVENTORY_WEIGHT_IS_BELOW_80_PERCENT_AND_THE_QUANTITY_IS_BELOW_90_PERCENT);
 			return null;
 		}
 		
-		Quest q255 = QuestManager.getInstance().getQuest(Q00255_Tutorial);
+		Quest q255 = QuestManager.getInstance().getQuest(Q00255_TUTORIAL);
 		QuestState qs255 = q255.getQuestState(player, true);
 		
 		int i0 = qs255.getMemoStateEx(1);
@@ -255,10 +232,10 @@ public final class SSQTeleporter extends AbstractNpcAI {
 			i3 = (7 * 7) * 500;
 		}
 		
-		Quest q635 = QuestManager.getInstance().getQuest(Q00635_IntoTheDimensionalRift);
+		Quest q635 = QuestManager.getInstance().getQuest(Q00635_INTOTHEDIMENSIONALRIFT);
 		QuestState qs635 = q635.getQuestState(player, true);
 		
-		if (!haveMemo(player, Q00635_IntoTheDimensionalRift)) {
+		if (!haveMemo(player, Q00635_INTOTHEDIMENSIONALRIFT)) {
 			if (player.getAllActiveQuests().size() < MAX_QUEST_COUNT) {
 				if (getQuestItemsCount(player, Inventory.ADENA_ID) >= i3) {
 					qs635.setMemoState(0);
@@ -273,7 +250,7 @@ public final class SSQTeleporter extends AbstractNpcAI {
 				return "enter_necropolis1_q0635_11.htm";
 			}
 		} else {
-			if (haveMemo(player, Q00635_IntoTheDimensionalRift)) {
+			if (haveMemo(player, Q00635_INTOTHEDIMENSIONALRIFT)) {
 				if (getQuestItemsCount(player, Inventory.ADENA_ID) >= i3) {
 					qs635.setMemoState(0);
 					qs635.startQuest();
@@ -294,5 +271,26 @@ public final class SSQTeleporter extends AbstractNpcAI {
 	@Override
 	public String onFirstTalk(L2Npc npc, L2PcInstance player) {
 		return "ss_teleporter001.htm";
+	}
+	
+	private int getMemoStateId(int npcId) {
+		return switch (npcId) {
+			case 31095, 31103 -> 210000;
+			case 31096, 31104 -> 230000;
+			case 31097, 31105 -> 250000;
+			case 31098, 31106 -> 270000;
+			case 31099, 31107 -> 290000;
+			case 31100, 31108 -> 300000;
+			case 31101, 31109 -> 310000;
+			case 31102, 31110 -> 320000;
+		
+			case 31114, 31120 -> 220000;
+			case 31115, 31121 -> 240000;
+			case 31116, 31122 -> 260000;
+			case 31117, 31123 -> 280000;
+			case 31118, 31124 -> 330000;
+			case 31119, 31125 -> 340000;
+			default -> 0;
+		};
 	}
 }

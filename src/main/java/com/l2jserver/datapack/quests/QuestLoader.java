@@ -404,6 +404,7 @@ import com.l2jserver.datapack.quests.Q00464_Oath.Q00464_Oath;
 import com.l2jserver.datapack.quests.Q00501_ProofOfClanAlliance.Q00501_ProofOfClanAlliance;
 import com.l2jserver.datapack.quests.Q00503_PursuitOfClanAmbition.Q00503_PursuitOfClanAmbition;
 import com.l2jserver.datapack.quests.Q00504_CompetitionForTheBanditStronghold.Q00504_CompetitionForTheBanditStronghold;
+import com.l2jserver.datapack.quests.Q00505_BloodOffering.Q00505_BloodOffering;
 import com.l2jserver.datapack.quests.Q00508_AClansReputation.Q00508_AClansReputation;
 import com.l2jserver.datapack.quests.Q00509_AClansFame.Q00509_AClansFame;
 import com.l2jserver.datapack.quests.Q00510_AClansPrestige.Q00510_AClansPrestige;
@@ -915,6 +916,7 @@ public class QuestLoader {
 		Q00501_ProofOfClanAlliance.class,
 		Q00503_PursuitOfClanAmbition.class,
 		Q00504_CompetitionForTheBanditStronghold.class,
+		Q00505_BloodOffering.class,
 		Q00508_AClansReputation.class,
 		Q00509_AClansFame.class,
 		Q00510_AClansPrestige.class,

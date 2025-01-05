@@ -1,7 +1,6 @@
 CREATE TABLE IF NOT EXISTS `seven_signs_status` (
   `id` int(3) NOT NULL DEFAULT '0',
   `current_cycle` int(10) NOT NULL DEFAULT '1',
-  `festival_cycle` int(10) NOT NULL DEFAULT '1',
   `active_period` int(10) NOT NULL DEFAULT '1',
   `date` bigint(13) unsigned NOT NULL DEFAULT '0',
   `previous_winner` int(10) NOT NULL DEFAULT '0',
@@ -27,4 +26,4 @@ CREATE TABLE IF NOT EXISTS `seven_signs_status` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT IGNORE INTO `seven_signs_status` VALUES
-(0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+(0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);

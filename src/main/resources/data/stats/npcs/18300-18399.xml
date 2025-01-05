@@ -46,7 +46,7 @@
 			<height normal="21" />
 		</collision>
 	</npc>
-	<npc id="18301" level="46" type="L2Npc" name="Flame of Apostates">
+	<npc id="18301" level="46" type="L2FestivalMonster" name="Flame of Apostates">
 		<!-- Confirmed CT2.5 -->
 		<parameters>
 			<param name="RoomIndex" value="2" />
@@ -138,7 +138,7 @@
 			<height normal="22" grown="26.4" />
 		</collision>
 	</npc>
-	<npc id="18303" level="57" type="L2Npc" name="Flame of the Witch">
+	<npc id="18303" level="57" type="L2FestivalMonster" name="Flame of the Witch">
 		<!-- Confirmed CT2.5 -->
 		<parameters>
 			<param name="RoomIndex" value="3" />
@@ -230,7 +230,7 @@
 			<height normal="21.5" />
 		</collision>
 	</npc>
-	<npc id="18305" level="68" type="L2Npc" name="Flame of Dark Omen">
+	<npc id="18305" level="68" type="L2FestivalMonster" name="Flame of Dark Omen">
 		<!-- Confirmed CT2.5 -->
 		<parameters>
 			<param name="RoomIndex" value="4" />
@@ -322,7 +322,7 @@
 			<height normal="21.5" />
 		</collision>
 	</npc>
-	<npc id="18307" level="78" type="L2Npc" name="Flame of Forbidden Path">
+	<npc id="18307" level="78" type="L2FestivalMonster" name="Flame of Forbidden Path">
 		<!-- Confirmed CT2.5 -->
 		<parameters>
 			<param name="RoomIndex" value="5" />
@@ -414,7 +414,7 @@
 			<height normal="20" />
 		</collision>
 	</npc>
-	<npc id="18309" level="35" type="L2Npc" name="Flame of the Branded">
+	<npc id="18309" level="35" type="L2FestivalMonster" name="Flame of the Branded">
 		<!-- Confirmed CT2.5 -->
 		<parameters>
 			<param name="RoomIndex" value="1" />
@@ -506,7 +506,7 @@
 			<height normal="21" />
 		</collision>
 	</npc>
-	<npc id="18311" level="46" type="L2Npc" name="Flame of Apostates">
+	<npc id="18311" level="46" type="L2FestivalMonster" name="Flame of Apostates">
 		<!-- Confirmed CT2.5 -->
 		<parameters>
 			<param name="RoomIndex" value="2" />
@@ -598,7 +598,7 @@
 			<height normal="22" grown="26.4" />
 		</collision>
 	</npc>
-	<npc id="18313" level="57" type="L2Npc" name="Flame of the Witch">
+	<npc id="18313" level="57" type="L2FestivalMonster" name="Flame of the Witch">
 		<!-- Confirmed CT2.5 -->
 		<parameters>
 			<param name="RoomIndex" value="3" />
@@ -690,7 +690,7 @@
 			<height normal="21.5" />
 		</collision>
 	</npc>
-	<npc id="18315" level="68" type="L2Npc" name="Flame of Dark Omen">
+	<npc id="18315" level="68" type="L2FestivalMonster" name="Flame of Dark Omen">
 		<!-- Confirmed CT2.5 -->
 		<parameters>
 			<param name="RoomIndex" value="4" />
@@ -782,7 +782,7 @@
 			<height normal="21.5" />
 		</collision>
 	</npc>
-	<npc id="18317" level="78" type="L2Npc" name="Flame of Forbidden Path">
+	<npc id="18317" level="78" type="L2FestivalMonster" name="Flame of Forbidden Path">
 		<!-- Confirmed CT2.5 -->
 		<parameters>
 			<param name="RoomIndex" value="5" />

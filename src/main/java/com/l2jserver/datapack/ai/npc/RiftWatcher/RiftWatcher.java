@@ -45,45 +45,22 @@ public final class RiftWatcher extends AbstractNpcAI {
 		31493
 	};
 	
-	private static final int Q00255_Tutorial = 255;
-	private static final int Q00635_IntoTheDimensionalRift = 635;
+	private static final int Q00255_TUTORIAL = 255;
+	private static final int Q00505_BLOODOFFERING = 505;
+	private static final int Q00635_INTOTHEDIMENSIONALRIFT = 635;
 	
 	private static final int DIMENSIONAL_FRAGMENT = 7079;
 	
 	private static final double WEIGHT_LIMIT = 0.80;
+	private static final double QUEST_LIMIT = 0.90;
 	private static final int MAX_QUEST_COUNT = 40;
 	
 	private static final int MAX_DISTANCE = 1500;
 	
 	public RiftWatcher() {
 		super(RiftWatcher.class.getSimpleName(), "ai/npc");
-		
 		bindStartNpc(NPCS);
 		bindFirstTalk(NPCS);
-	}
-	
-	private int getItemsNeeded(int npcId) {
-		return switch (npcId) {
-			case 31488 -> 21;
-			case 31489 -> 24;
-			case 31490 -> 27;
-			case 31491 -> 30;
-			case 31492 -> 33;
-			case 31493 -> 36;
-			default -> 36;
-		};
-	}
-	
-	private byte getType(int npcId) {
-		return switch (npcId) {
-			case 31488 -> 1;
-			case 31489 -> 2;
-			case 31490 -> 3;
-			case 31491 -> 4;
-			case 31492 -> 5;
-			case 31493 -> 6;
-			default -> 1;
-		};
 	}
 	
 	@Override
@@ -98,8 +75,8 @@ public final class RiftWatcher extends AbstractNpcAI {
 		int ask = Integer.parseInt(event.split(";")[0]);
 		switch (ask) {
 			case 635 -> {
-				if ((player.getInventory().getSize(false) >= (player.getInventoryLimit() * WEIGHT_LIMIT)) || (player.getCurrentLoad() >= (player.getMaxLoad() * WEIGHT_LIMIT))) {
-					player.sendPacket(SystemMessageId.INVENTORY_LESS_THAN_80_PERCENT);
+				if (player.getInventory().getSize(true) >= (player.getQuestInventoryLimit() * QUEST_LIMIT) || player.getInventory().getSize(false) >= (player.getInventoryLimit() * WEIGHT_LIMIT) || player.getCurrentLoad() >= (player.getMaxLoad() * WEIGHT_LIMIT)) {
+					player.sendPacket(SystemMessageId.YOU_CAN_PROCEED_ONLY_WHEN_THE_INVENTORY_WEIGHT_IS_BELOW_80_PERCENT_AND_THE_QUANTITY_IS_BELOW_90_PERCENT);
 					return null;
 				}
 				
@@ -126,7 +103,7 @@ public final class RiftWatcher extends AbstractNpcAI {
 						int i6 = getGameTicks();
 						
 						for (L2PcInstance c1 : party0.getMembers()) {
-							if ((c1.getAllActiveQuests().size() > (MAX_QUEST_COUNT - 1)) && !haveMemo(c1, Q00635_IntoTheDimensionalRift)) {
+							if ((c1.getAllActiveQuests().size() > (MAX_QUEST_COUNT - 1)) && !haveMemo(c1, Q00635_INTOTHEDIMENSIONALRIFT)) {
 								i1 = 2;
 								
 								String html = getHtm(player.getHtmlPrefix(), "rift_watcher_1_q0635_03a.htm");
@@ -135,7 +112,7 @@ public final class RiftWatcher extends AbstractNpcAI {
 							}
 							
 							if (getQuestItemsCount(c1, DIMENSIONAL_FRAGMENT) < itemsNeed) {
-								Quest q635 = QuestManager.getInstance().getQuest(Q00635_IntoTheDimensionalRift);
+								Quest q635 = QuestManager.getInstance().getQuest(Q00635_INTOTHEDIMENSIONALRIFT);
 								QuestState qs635 = q635.getQuestState(c1, true);
 								
 								int i5 = qs635.getMemoStateEx(1);
@@ -158,7 +135,7 @@ public final class RiftWatcher extends AbstractNpcAI {
 							for (L2PcInstance c1 : player.getParty().getMembers()) {
 								final double distance = Util.calculateDistance(npc, c0, true, false);
 								if (distance <= MAX_DISTANCE) {
-									Quest q635 = QuestManager.getInstance().getQuest(Q00635_IntoTheDimensionalRift);
+									Quest q635 = QuestManager.getInstance().getQuest(Q00635_INTOTHEDIMENSIONALRIFT);
 									QuestState qs635 = q635.getQuestState(c1, true);
 									
 									if (qs635.getMemoState() == 2) {
@@ -182,12 +159,16 @@ public final class RiftWatcher extends AbstractNpcAI {
 						}
 					}
 					case 2 -> {
-						Quest q255 = QuestManager.getInstance().getQuest(Q00255_Tutorial);
+						Quest q255 = QuestManager.getInstance().getQuest(Q00255_TUTORIAL);
 						QuestState qs255 = q255.getQuestState(player, true);
 						
-						Quest q635 = QuestManager.getInstance().getQuest(Q00635_IntoTheDimensionalRift);
+						Quest q505 = QuestManager.getInstance().getQuest(Q00505_BLOODOFFERING);
+						QuestState qs505 = q505.getQuestState(player, true);
+						
+						Quest q635 = QuestManager.getInstance().getQuest(Q00635_INTOTHEDIMENSIONALRIFT);
 						QuestState qs635 = q635.getQuestState(player, true);
 						
+						qs505.exitQuest(true, false);
 						int i0 = qs255.getMemoStateEx(1);
 						int i1 = i0 % 10000;
 						int i2 = ((i0 - i1) + 5) / 10000;
@@ -485,5 +466,29 @@ public final class RiftWatcher extends AbstractNpcAI {
 	@Override
 	public String onFirstTalk(L2Npc npc, L2PcInstance player) {
 		return "rift_watcher_1001.htm";
+	}
+	
+	private int getItemsNeeded(int npcId) {
+		return switch (npcId) {
+			case 31488 -> 21;
+			case 31489 -> 24;
+			case 31490 -> 27;
+			case 31491 -> 30;
+			case 31492 -> 33;
+			case 31493 -> 36;
+			default -> 36;
+		};
+	}
+	
+	private byte getType(int npcId) {
+		return switch (npcId) {
+			case 31488 -> 1;
+			case 31489 -> 2;
+			case 31490 -> 3;
+			case 31491 -> 4;
+			case 31492 -> 5;
+			case 31493 -> 6;
+			default -> 1;
+		};
 	}
 }

@@ -120,7 +120,6 @@ import com.l2jserver.datapack.handlers.bypasshandlers.BuyShadowItem;
 import com.l2jserver.datapack.handlers.bypasshandlers.ChatLink;
 import com.l2jserver.datapack.handlers.bypasshandlers.ClanWarehouse;
 import com.l2jserver.datapack.handlers.bypasshandlers.EventEngine;
-import com.l2jserver.datapack.handlers.bypasshandlers.Festival;
 import com.l2jserver.datapack.handlers.bypasshandlers.Freight;
 import com.l2jserver.datapack.handlers.bypasshandlers.ItemAuctionLink;
 import com.l2jserver.datapack.handlers.bypasshandlers.LearnSkill;
@@ -358,7 +357,6 @@ public class MasterHandler {
 		ChatLink.class,
 		ClanWarehouse.class,
 		EventEngine.class,
-		Festival.class,
 		Freight.class,
 		ItemAuctionLink.class,
 		LearnSkill.class,
