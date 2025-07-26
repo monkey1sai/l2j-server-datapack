@@ -2161,7 +2161,7 @@
 			<height normal="24" />
 		</collision>
 	</npc>
-	<npc id="32359" level="70" type="L2Merchant" name="Lahm" title="Blacksmith of Power">
+	<npc id="32359" level="70" type="L2Npc" name="Lahm" title="Blacksmith of Power">
 		<!-- Confirmed CT2.5 -->
 		<parameters>
 			<param name="MoveAroundSocial" value="0" />

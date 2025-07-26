@@ -145,6 +145,7 @@ public final class WeaverOlf extends AbstractNpcAI {
 	};
 	
 	public WeaverOlf() {
+		bindFirstTalk(NPCs);
 		bindStartNpc(NPCs);
 		bindTalk(NPCs);
 	}
@@ -196,6 +197,11 @@ public final class WeaverOlf extends AbstractNpcAI {
 			return super.onEvent(event, npc, player);
 		}
 		return event;
+	}
+	
+	@Override
+	public String onFirstTalk(L2Npc npc, L2PcInstance talker) {
+		return npc.getId() + ".htm";
 	}
 	
 	@Override

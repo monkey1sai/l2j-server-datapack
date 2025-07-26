@@ -56,9 +56,7 @@ public final class VarkaSilenosSupport extends AbstractNpcAI {
 	private static final int ASHAS = 31377; // Hierarch
 	private static final int NARAN = 31378; // Messenger
 	private static final int UDAN = 31379; // Buffer
-	private static final int DIYABU = 31380; // Grocer
 	private static final int HAGOS = 31381; // Warehouse Keeper
-	private static final int SHIKON = 31382; // Trader
 	
 	// Items
 	private static final int SEED = 7187;
@@ -83,7 +81,7 @@ public final class VarkaSilenosSupport extends AbstractNpcAI {
 	}
 	
 	public VarkaSilenosSupport() {
-		bindFirstTalk(ASHAS, NARAN, UDAN, DIYABU, HAGOS, SHIKON);
+		bindFirstTalk(ASHAS, NARAN, UDAN, HAGOS);
 		bindTalk(UDAN, HAGOS);
 		bindStartNpc(HAGOS);
 	}
@@ -128,19 +126,8 @@ public final class VarkaSilenosSupport extends AbstractNpcAI {
 			case UDAN:
 				htmltext = (allianceLevel < 0) ? (allianceLevel > -3) ? "31379-01.html" : "31379-04.html" : "31379-03.html";
 				break;
-			case DIYABU:
-				htmltext = (allianceLevel < 0) ? "31380-friend.html" : "31380-no.html";
-				break;
 			case HAGOS:
 				htmltext = (allianceLevel < 0) ? (allianceLevel == -1) ? "31381-01.html" : "31381-02.html" : "31381-no.html";
-				break;
-			case SHIKON:
-				htmltext = switch (allianceLevel) {
-					case -1, -2 -> "31382-01.html";
-					case -3, -4 -> "31382-02.html";
-					case -5 -> "31382-03.html";
-					default -> "31382-no.html";
-				};
 				break;
 		}
 		return htmltext;

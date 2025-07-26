@@ -29,8 +29,8 @@ import com.l2jserver.gameserver.model.ClanPrivilege;
 import com.l2jserver.gameserver.model.Location;
 import com.l2jserver.gameserver.model.actor.L2Character;
 import com.l2jserver.gameserver.model.actor.L2Npc;
-import com.l2jserver.gameserver.model.actor.instance.L2MerchantInstance;
 import com.l2jserver.gameserver.model.actor.instance.L2PcInstance;
+import com.l2jserver.gameserver.model.buylist.L2BuyList;
 import com.l2jserver.gameserver.model.entity.Fort;
 import com.l2jserver.gameserver.model.events.impl.character.player.PlayerMenuSelected;
 import com.l2jserver.gameserver.model.events.impl.character.player.PlayerTeleportRequest;
@@ -102,7 +102,14 @@ public abstract class FortressSteward extends AbstractNpcAI {
 	protected TelPosList[] position1;
 	protected TelPosList[] position2;
 	
-private static Map<Integer, SkillHolder> _supportList = new HashMap<>();
+	protected L2BuyList sellList0;
+	protected L2BuyList sellList1;
+	protected L2BuyList sellList2;
+	protected L2BuyList sellList3;
+	protected L2BuyList sellList4;
+	protected L2BuyList sellList5;
+	
+	private static Map<Integer, SkillHolder> _supportList = new HashMap<>();
 	
 	static {
 		_supportList.put(284557313, new SkillHolder(4342, 1));
@@ -381,8 +388,26 @@ private static Map<Integer, SkillHolder> _supportList = new HashMap<>();
 							if (fort.getFunction(Fort.FUNC_ITEM_CREATE) == null) {
 								showPage(talker, fnFuncDisabled);
 							} else {
-								var itemList = "0" + (fort.getFunction(Fort.FUNC_ITEM_CREATE).getLvl() - 10) + "" + npc.getId();
-								((L2MerchantInstance) npc).showBuyWindow(talker, Integer.valueOf(itemList));
+								switch (fort.getFunction(Fort.FUNC_ITEM_CREATE).getLvl() - 10) {
+									case 1 -> {
+										showBuySell(talker, npc, sellList0);
+									}
+									case 2 -> {
+										showBuySell(talker, npc, sellList1);
+									}
+									case 3 -> {
+										showBuySell(talker, npc, sellList2);
+									}
+									case 4 -> {
+										showBuySell(talker, npc, sellList3);
+									}
+									case 5 -> {
+										showBuySell(talker, npc, sellList4);
+									}
+									case 6 -> {
+										showBuySell(talker, npc, sellList5);
+									}
+								}
 							}
 						} else {
 							showPage(talker, fnNoAuthority);

@@ -47,6 +47,83 @@ public class ChamberlainBandello extends Steward {
 		new TelPosList(1010706, new Location(76911, -55295, -5824), 500)
 	};
 	
+	private static final BuySellList[] _sellList0 = new BuySellList[] {
+		new BuySellList(6902, 10, 0.000000, 0), // pledge_shield_agit
+		new BuySellList(6316, 10, 0.000000, 0), // advdeluxe_food_for_strider
+		new BuySellList(1829, 10, 1.000000, 5), // scroll_of_escape_to_agit
+		new BuySellList(5169, 10, 1.000000, 5) // deluxe_food_for_strider
+	};
+	
+	private static final BuySellList[] _sellList1 = new BuySellList[] {
+		new BuySellList(6902, 10, 0.000000, 0), // pledge_shield_agit
+		new BuySellList(6316, 10, 0.000000, 0), // advdeluxe_food_for_strider
+		new BuySellList(1829, 10, 1.000000, 5), // scroll_of_escape_to_agit
+		new BuySellList(5858, 10, 1.000000, 3), // blessed_scroll_of_escape_to_agit
+		new BuySellList(5169, 10, 1.000000, 10), // deluxe_food_for_strider
+		new BuySellList(956, 10, 0.500000, 1), // scrl_of_ench_am_d
+		new BuySellList(952, 10, 0.200000, 1), // scrl_of_ench_am_c
+		new BuySellList(948, 10, 0.040000, 1), // scrl_of_ench_am_b
+		new BuySellList(7134, 10, 1.000000, 1), // escape_scroll_rune
+		new BuySellList(7126, 10, 1.000000, 1), // escape_scroll_giran
+		new BuySellList(8645, 10, 0.500000, 1), // rp_elixir_of_life_s
+		new BuySellList(8651, 10, 0.500000, 1), // rp_elixir_of_mental_s
+		new BuySellList(8751, 10, 0.500000, 1) // rare_70_a
+	};
+	
+	private static final BuySellList[] _sellList2 = new BuySellList[] {
+		new BuySellList(6902, 10, 0.000000, 0), // pledge_shield_agit
+		new BuySellList(6316, 10, 0.000000, 0), // advdeluxe_food_for_strider
+		new BuySellList(1829, 10, 1.000000, 5), // scroll_of_escape_to_agit
+		new BuySellList(5858, 10, 1.000000, 3), // blessed_scroll_of_escape_to_agit
+		new BuySellList(5169, 10, 1.000000, 10), // deluxe_food_for_strider
+		new BuySellList(952, 10, 0.500000, 1), // scrl_of_ench_am_c
+		new BuySellList(948, 10, 0.200000, 1), // scrl_of_ench_am_b
+		new BuySellList(730, 10, 0.040000, 1), // scrl_of_ench_am_a
+		new BuySellList(7134, 10, 1.000000, 1), // escape_scroll_rune
+		new BuySellList(7126, 10, 1.000000, 1), // escape_scroll_giran
+		new BuySellList(7584, 10, 0.500000, 1), // ticket_cougar_chime
+		new BuySellList(6928, 10, 1.000000, 1), // rp_greater_healing_potion
+		new BuySellList(6935, 10, 1.000000, 1), // rp_adv_quick_step_potion
+		new BuySellList(6936, 10, 1.000000, 1), // rp_adv_swift_attack_potion
+		new BuySellList(6938, 10, 1.000000, 1), // rp_potion_of_acumen3
+		new BuySellList(6921, 10, 1.000000, 1), // rp_fish_oil_high
+		new BuySellList(8366, 10, 1.000000, 1), // rp_chaperon_of_dresser
+		new BuySellList(7699, 10, 1.000000, 1), // rp_forget_me_not_hairpin
+		new BuySellList(6939, 10, 1.000000, 1), // rp_bighead_potion
+		new BuySellList(6947, 10, 1.000000, 1), // rp_hairstyle_a_potion
+		new BuySellList(6948, 10, 1.000000, 1), // rp_hairstyle_b_potion
+		new BuySellList(6949, 10, 1.000000, 1), // rp_hairstyle_c_potion
+		new BuySellList(6950, 10, 1.000000, 1), // rp_hairstyle_d_potion
+		new BuySellList(6951, 10, 1.000000, 1), // rp_hairstyle_e_potion
+		new BuySellList(6952, 10, 1.000000, 1), // rp_hairstyle_f_potion
+		new BuySellList(6953, 10, 1.000000, 1), // rp_hairstyle_g_potion
+		new BuySellList(7002, 10, 1.000000, 1), // rp_dye_s4c4_c
+		new BuySellList(7003, 10, 1.000000, 1), // rp_dye_s4d4_c
+		new BuySellList(7004, 10, 1.000000, 1), // rp_dye_c4s4_c
+		new BuySellList(7005, 10, 1.000000, 1), // rp_dye_c4c4_c
+		new BuySellList(7006, 10, 1.000000, 1), // rp_dye_d4s4_c
+		new BuySellList(7007, 10, 1.000000, 1), // rp_dye_d4c4_c
+		new BuySellList(7008, 10, 1.000000, 1), // rp_dye_i4m4_c
+		new BuySellList(7009, 10, 1.000000, 1), // rp_dye_i4w4_c
+		new BuySellList(7010, 10, 1.000000, 1), // rp_dye_m4i4_c
+		new BuySellList(7011, 10, 1.000000, 1), // rp_dye_m4w4_c
+		new BuySellList(7012, 10, 1.000000, 1), // rp_dye_w4i4_c
+		new BuySellList(7013, 10, 1.000000, 1), // rp_dye_w4m4_c
+		new BuySellList(8645, 10, 0.500000, 1), // rp_elixir_of_life_s
+		new BuySellList(8651, 10, 0.500000, 1), // rp_elixir_of_mental_s
+		new BuySellList(8751, 10, 0.500000, 1), // rare_70_a
+		new BuySellList(8752, 10, 0.250000, 1), // rare_75_s
+		new BuySellList(8761, 10, 0.166000, 1), // unique_70_a
+		new BuySellList(729, 10, 0.083000, 1), // scrl_of_ench_wp_a
+		new BuySellList(960, 10, 0.042000, 1), // scrl_of_ench_am_s
+		new BuySellList(9898, 10, 0.125000, 1), // scroll_of_high_sp
+		new BuySellList(16118, 10, 0.042000, 1), // rp_turban_brown_hat_i
+		new BuySellList(16119, 10, 0.042000, 1), // rp_turban_yellow_hat_i
+		new BuySellList(8762, 10, 0.083000, 1), // unique_75_s
+		new BuySellList(16130, 10, 1.000000, 10), // turban_brown_hat_piece
+		new BuySellList(16131, 10, 1.000000, 10) // turban_yellow_hat_piece
+	};
+	
 	private static final int npcId = 35640;
 	
 	public ChamberlainBandello() {
@@ -54,6 +131,10 @@ public class ChamberlainBandello extends Steward {
 		
 		super.position1 = _position1;
 		super.position2 = _position2;
+		
+		super.sellList0 = buildBuySellList(_sellList0, npcId, 0);
+		super.sellList1 = buildBuySellList(_sellList1, npcId, 1);
+		super.sellList2 = buildBuySellList(_sellList2, npcId, 2);
 		
 		super.fnHi = "data/html/clanHallManager/chamberlain_bandello001.htm";
 		super.fnNotMyLord = "data/html/clanHallManager/chamberlain_bandello002.htm";

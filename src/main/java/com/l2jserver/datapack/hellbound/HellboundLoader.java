@@ -46,7 +46,6 @@ import com.l2jserver.datapack.hellbound.ai.npc.Kanaf.Kanaf;
 import com.l2jserver.datapack.hellbound.ai.npc.Kief.Kief;
 import com.l2jserver.datapack.hellbound.ai.npc.Natives.Natives;
 import com.l2jserver.datapack.hellbound.ai.npc.Quarry.Quarry;
-import com.l2jserver.datapack.hellbound.ai.npc.Shadai.Shadai;
 import com.l2jserver.datapack.hellbound.ai.npc.Solomon.Solomon;
 import com.l2jserver.datapack.hellbound.ai.npc.Warpgate.Warpgate;
 import com.l2jserver.datapack.hellbound.ai.zones.AnomicFoundry.AnomicFoundry;
@@ -97,7 +96,6 @@ public final class HellboundLoader {
 		Kief.class,
 		Natives.class,
 		Quarry.class,
-		Shadai.class,
 		Solomon.class,
 		Warpgate.class,
 		// Zones

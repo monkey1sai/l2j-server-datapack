@@ -100,7 +100,6 @@ import com.l2jserver.datapack.ai.individual.Antharas.Antharas;
 import com.l2jserver.datapack.ai.individual.Baium.Baium;
 import com.l2jserver.datapack.ai.individual.Sailren.Sailren;
 import com.l2jserver.datapack.ai.individual.Venom.Venom;
-import com.l2jserver.datapack.ai.npc.Abercrombie.Abercrombie;
 import com.l2jserver.datapack.ai.npc.AdventureGuildsman.AdventureGuildsman;
 import com.l2jserver.datapack.ai.npc.AgitDoorkeeper.AzitDoorman.AzitDoorman;
 import com.l2jserver.datapack.ai.npc.AgitDoorkeeper.DoormanOfFortress.DoormanOfFortress;
@@ -111,7 +110,6 @@ import com.l2jserver.datapack.ai.npc.AgitDoorkeeper.PartisanDoormanHarkel.Partis
 import com.l2jserver.datapack.ai.npc.Alarm.Alarm;
 import com.l2jserver.datapack.ai.npc.Alexandria.Alexandria;
 import com.l2jserver.datapack.ai.npc.ArenaManager.ArenaManager;
-import com.l2jserver.datapack.ai.npc.Asamah.Asamah;
 import com.l2jserver.datapack.ai.npc.AvantGarde.AvantGarde;
 import com.l2jserver.datapack.ai.npc.BlackJudge.BlackJudge;
 import com.l2jserver.datapack.ai.npc.BlackMarketeerOfMammon.BlackMarketeerOfMammon;
@@ -119,7 +117,20 @@ import com.l2jserver.datapack.ai.npc.BlacksmithOfMammon.BlacksmithOfMammon;
 import com.l2jserver.datapack.ai.npc.CastleAmbassador.CastleAmbassador;
 import com.l2jserver.datapack.ai.npc.CastleBlacksmith.CastleBlacksmith;
 import com.l2jserver.datapack.ai.npc.CastleCourtMagician.CastleCourtMagician;
-import com.l2jserver.datapack.ai.npc.CastleMercenaryManager.CastleMercenaryManager;
+import com.l2jserver.datapack.ai.npc.CastleMerchant.ManorManager1.ManorManager1;
+import com.l2jserver.datapack.ai.npc.CastleMerchant.ManorManager10.ManorManager10;
+import com.l2jserver.datapack.ai.npc.CastleMerchant.ManorManager11.ManorManager11;
+import com.l2jserver.datapack.ai.npc.CastleMerchant.ManorManager12.ManorManager12;
+import com.l2jserver.datapack.ai.npc.CastleMerchant.ManorManager13.ManorManager13;
+import com.l2jserver.datapack.ai.npc.CastleMerchant.ManorManager14.ManorManager14;
+import com.l2jserver.datapack.ai.npc.CastleMerchant.ManorManager2.ManorManager2;
+import com.l2jserver.datapack.ai.npc.CastleMerchant.ManorManager3.ManorManager3;
+import com.l2jserver.datapack.ai.npc.CastleMerchant.ManorManager4.ManorManager4;
+import com.l2jserver.datapack.ai.npc.CastleMerchant.ManorManager5.ManorManager5;
+import com.l2jserver.datapack.ai.npc.CastleMerchant.ManorManager6.ManorManager6;
+import com.l2jserver.datapack.ai.npc.CastleMerchant.ManorManager7.ManorManager7;
+import com.l2jserver.datapack.ai.npc.CastleMerchant.ManorManager8.ManorManager8;
+import com.l2jserver.datapack.ai.npc.CastleMerchant.ManorManager9.ManorManager9;
 import com.l2jserver.datapack.ai.npc.CastleSiegeManager.CastleSiegeManager;
 import com.l2jserver.datapack.ai.npc.CastleTeleporter.CastleTeleporter;
 import com.l2jserver.datapack.ai.npc.CastleWarehouse.CastleWarehouse;
@@ -133,7 +144,6 @@ import com.l2jserver.datapack.ai.npc.Chamberlain.Neurath.Neurath;
 import com.l2jserver.datapack.ai.npc.Chamberlain.Saius.Saius;
 import com.l2jserver.datapack.ai.npc.Chamberlain.Saul.Saul;
 import com.l2jserver.datapack.ai.npc.Chandra.Chandra;
-import com.l2jserver.datapack.ai.npc.ClanTrader.ClanTrader;
 import com.l2jserver.datapack.ai.npc.ClassMaster.ClassMaster;
 import com.l2jserver.datapack.ai.npc.CleftGateRed.CleftGateRed;
 import com.l2jserver.datapack.ai.npc.Custodian.Adrienne.Adrienne;
@@ -181,8 +191,6 @@ import com.l2jserver.datapack.ai.npc.Dorian.Dorian;
 import com.l2jserver.datapack.ai.npc.DragonVortex.DragonVortex;
 import com.l2jserver.datapack.ai.npc.EchoCrystals.EchoCrystals;
 import com.l2jserver.datapack.ai.npc.Elmina.Elmina;
-import com.l2jserver.datapack.ai.npc.FameManager.FameManager;
-import com.l2jserver.datapack.ai.npc.Fisherman.Fisherman;
 import com.l2jserver.datapack.ai.npc.ForgeOfTheGods.ForgeOfTheGods;
 import com.l2jserver.datapack.ai.npc.ForgeOfTheGods.Rooney;
 import com.l2jserver.datapack.ai.npc.ForgeOfTheGods.TarBeetle;
@@ -221,8 +229,239 @@ import com.l2jserver.datapack.ai.npc.Katenar.Katenar;
 import com.l2jserver.datapack.ai.npc.KetraOrcSupport.KetraOrcSupport;
 import com.l2jserver.datapack.ai.npc.Kier.Kier;
 import com.l2jserver.datapack.ai.npc.Kroon.Kroon;
-import com.l2jserver.datapack.ai.npc.ManorManager.ManorManager;
 import com.l2jserver.datapack.ai.npc.MercenaryCaptain.MercenaryCaptain;
+import com.l2jserver.datapack.ai.npc.Merchant.Abercrombie.Abercrombie;
+import com.l2jserver.datapack.ai.npc.Merchant.Acellopy.Acellopy;
+import com.l2jserver.datapack.ai.npc.Merchant.Adrian.Adrian;
+import com.l2jserver.datapack.ai.npc.Merchant.Alexis.Alexis;
+import com.l2jserver.datapack.ai.npc.Merchant.Alisha.Alisha;
+import com.l2jserver.datapack.ai.npc.Merchant.Altar.Altar;
+import com.l2jserver.datapack.ai.npc.Merchant.Anton.Anton;
+import com.l2jserver.datapack.ai.npc.Merchant.Antonio.Antonio;
+import com.l2jserver.datapack.ai.npc.Merchant.Aren.Aren;
+import com.l2jserver.datapack.ai.npc.Merchant.Ariel.Ariel;
+import com.l2jserver.datapack.ai.npc.Merchant.Arodin.Arodin;
+import com.l2jserver.datapack.ai.npc.Merchant.Arvid.Arvid;
+import com.l2jserver.datapack.ai.npc.Merchant.Asama.Asama;
+import com.l2jserver.datapack.ai.npc.Merchant.Astrid.Astrid;
+import com.l2jserver.datapack.ai.npc.Merchant.Atan.Atan;
+import com.l2jserver.datapack.ai.npc.Merchant.Auzendurof.Auzendurof;
+import com.l2jserver.datapack.ai.npc.Merchant.Bandor.Bandor;
+import com.l2jserver.datapack.ai.npc.Merchant.Berynel.Berynel;
+import com.l2jserver.datapack.ai.npc.Merchant.Borodin.Borodin;
+import com.l2jserver.datapack.ai.npc.Merchant.Burns.Burns;
+import com.l2jserver.datapack.ai.npc.Merchant.Candice.Candice;
+import com.l2jserver.datapack.ai.npc.Merchant.Carson.Carson;
+import com.l2jserver.datapack.ai.npc.Merchant.Cel.Cel;
+import com.l2jserver.datapack.ai.npc.Merchant.Cema.Cema;
+import com.l2jserver.datapack.ai.npc.Merchant.Chali.Chali;
+import com.l2jserver.datapack.ai.npc.Merchant.Clancy.Clancy;
+import com.l2jserver.datapack.ai.npc.Merchant.Cona.Cona;
+import com.l2jserver.datapack.ai.npc.Merchant.Cullinas.Cullinas;
+import com.l2jserver.datapack.ai.npc.Merchant.Daeger.Daeger;
+import com.l2jserver.datapack.ai.npc.Merchant.Daeronees.Daeronees;
+import com.l2jserver.datapack.ai.npc.Merchant.Dani.Dani;
+import com.l2jserver.datapack.ai.npc.Merchant.Denkus.Denkus;
+import com.l2jserver.datapack.ai.npc.Merchant.Denver.Denver;
+import com.l2jserver.datapack.ai.npc.Merchant.Desian.Desian;
+import com.l2jserver.datapack.ai.npc.Merchant.Dindin.Dindin;
+import com.l2jserver.datapack.ai.npc.Merchant.Diyabu.Diyabu;
+import com.l2jserver.datapack.ai.npc.Merchant.Dolphren.Dolphren;
+import com.l2jserver.datapack.ai.npc.Merchant.Donai.Donai;
+import com.l2jserver.datapack.ai.npc.Merchant.Drawin.Drawin;
+import com.l2jserver.datapack.ai.npc.Merchant.Drumond.Drumond;
+import com.l2jserver.datapack.ai.npc.Merchant.Edroc.Edroc;
+import com.l2jserver.datapack.ai.npc.Merchant.Eldon.Eldon;
+import com.l2jserver.datapack.ai.npc.Merchant.Elena.Elena;
+import com.l2jserver.datapack.ai.npc.Merchant.Elliany.Elliany;
+import com.l2jserver.datapack.ai.npc.Merchant.Enverun.Enverun;
+import com.l2jserver.datapack.ai.npc.Merchant.Erinu.Erinu;
+import com.l2jserver.datapack.ai.npc.Merchant.Espen.Espen;
+import com.l2jserver.datapack.ai.npc.Merchant.FarmFeedSeller.FarmFeedSeller;
+import com.l2jserver.datapack.ai.npc.Merchant.Felton.Felton;
+import com.l2jserver.datapack.ai.npc.Merchant.Fisher.Batidae.Batidae;
+import com.l2jserver.datapack.ai.npc.Merchant.Fisher.Berix.Berix;
+import com.l2jserver.datapack.ai.npc.Merchant.Fisher.Bleaker.Bleaker;
+import com.l2jserver.datapack.ai.npc.Merchant.Fisher.Brang.Brang;
+import com.l2jserver.datapack.ai.npc.Merchant.Fisher.Cyano.Cyano;
+import com.l2jserver.datapack.ai.npc.Merchant.Fisher.Eindarkner.Eindarkner;
+import com.l2jserver.datapack.ai.npc.Merchant.Fisher.Galba.Galba;
+import com.l2jserver.datapack.ai.npc.Merchant.Fisher.Hilgendorf.Hilgendorf;
+import com.l2jserver.datapack.ai.npc.Merchant.Fisher.Hufs.Hufs;
+import com.l2jserver.datapack.ai.npc.Merchant.Fisher.Klaw.Klaw;
+import com.l2jserver.datapack.ai.npc.Merchant.Fisher.Klufe.Klufe;
+import com.l2jserver.datapack.ai.npc.Merchant.Fisher.Lanosco.Lanosco;
+import com.l2jserver.datapack.ai.npc.Merchant.Fisher.Linneaus.Linneaus;
+import com.l2jserver.datapack.ai.npc.Merchant.Fisher.Litulon.Litulon;
+import com.l2jserver.datapack.ai.npc.Merchant.Fisher.Mishini.Mishini;
+import com.l2jserver.datapack.ai.npc.Merchant.Fisher.Monakan.Monakan;
+import com.l2jserver.datapack.ai.npc.Merchant.Fisher.Ofulle.Ofulle;
+import com.l2jserver.datapack.ai.npc.Merchant.Fisher.Ogord.Ogord;
+import com.l2jserver.datapack.ai.npc.Merchant.Fisher.Pamfus.Pamfus;
+import com.l2jserver.datapack.ai.npc.Merchant.Fisher.Perelin.Perelin;
+import com.l2jserver.datapack.ai.npc.Merchant.Fisher.Platis.Platis;
+import com.l2jserver.datapack.ai.npc.Merchant.Fisher.Ropfi.Ropfi;
+import com.l2jserver.datapack.ai.npc.Merchant.Fisher.Willeri.Willeri;
+import com.l2jserver.datapack.ai.npc.Merchant.Fundin.Fundin;
+import com.l2jserver.datapack.ai.npc.Merchant.Gaiman.Gaiman;
+import com.l2jserver.datapack.ai.npc.Merchant.Galicbredo.Galicbredo;
+import com.l2jserver.datapack.ai.npc.Merchant.Galladuchi.Galladuchi;
+import com.l2jserver.datapack.ai.npc.Merchant.Garette.Garette;
+import com.l2jserver.datapack.ai.npc.Merchant.Garita.Garita;
+import com.l2jserver.datapack.ai.npc.Merchant.Gentler.Gentler;
+import com.l2jserver.datapack.ai.npc.Merchant.Giordo.Giordo;
+import com.l2jserver.datapack.ai.npc.Merchant.Gompers.Gompers;
+import com.l2jserver.datapack.ai.npc.Merchant.Grabner.Grabner;
+import com.l2jserver.datapack.ai.npc.Merchant.Green.Green;
+import com.l2jserver.datapack.ai.npc.Merchant.Greenspan.Greenspan;
+import com.l2jserver.datapack.ai.npc.Merchant.Greta.Greta;
+import com.l2jserver.datapack.ai.npc.Merchant.Groot.Groot;
+import com.l2jserver.datapack.ai.npc.Merchant.Hakran.Hakran;
+import com.l2jserver.datapack.ai.npc.Merchant.Hallypia.Hallypia;
+import com.l2jserver.datapack.ai.npc.Merchant.Hans.Hans;
+import com.l2jserver.datapack.ai.npc.Merchant.Harmony.Harmony;
+import com.l2jserver.datapack.ai.npc.Merchant.Hedinger.Hedinger;
+import com.l2jserver.datapack.ai.npc.Merchant.Helmut.Helmut;
+import com.l2jserver.datapack.ai.npc.Merchant.Helvetia.Helvetia;
+import com.l2jserver.datapack.ai.npc.Merchant.Hittchi.Hittchi;
+import com.l2jserver.datapack.ai.npc.Merchant.Holly.Holly;
+import com.l2jserver.datapack.ai.npc.Merchant.Hullia.Hullia;
+import com.l2jserver.datapack.ai.npc.Merchant.Ilia.Ilia;
+import com.l2jserver.datapack.ai.npc.Merchant.Iria.Iria;
+import com.l2jserver.datapack.ai.npc.Merchant.Iz.Iz;
+import com.l2jserver.datapack.ai.npc.Merchant.Jackson.Jackson;
+import com.l2jserver.datapack.ai.npc.Merchant.Jaka.Jaka;
+import com.l2jserver.datapack.ai.npc.Merchant.Jakaron.Jakaron;
+import com.l2jserver.datapack.ai.npc.Merchant.Janne.Janne;
+import com.l2jserver.datapack.ai.npc.Merchant.Jouge.Jouge;
+import com.l2jserver.datapack.ai.npc.Merchant.Judith.Judith;
+import com.l2jserver.datapack.ai.npc.Merchant.Jumara.Jumara;
+import com.l2jserver.datapack.ai.npc.Merchant.Karai.Karai;
+import com.l2jserver.datapack.ai.npc.Merchant.Katrine.Katrine;
+import com.l2jserver.datapack.ai.npc.Merchant.Kc.Kc;
+import com.l2jserver.datapack.ai.npc.Merchant.Kendrew.Kendrew;
+import com.l2jserver.datapack.ai.npc.Merchant.Kiki.Kiki;
+import com.l2jserver.datapack.ai.npc.Merchant.Kitzka.Kitzka;
+import com.l2jserver.datapack.ai.npc.Merchant.Koram.Koram;
+import com.l2jserver.datapack.ai.npc.Merchant.Kunai.Kunai;
+import com.l2jserver.datapack.ai.npc.Merchant.Lanna.Lanna;
+import com.l2jserver.datapack.ai.npc.Merchant.Lara.Lara;
+import com.l2jserver.datapack.ai.npc.Merchant.Lars.Lars;
+import com.l2jserver.datapack.ai.npc.Merchant.Lector.Lector;
+import com.l2jserver.datapack.ai.npc.Merchant.Leon.Leon;
+import com.l2jserver.datapack.ai.npc.Merchant.Lepidus.Lepidus;
+import com.l2jserver.datapack.ai.npc.Merchant.Liesel.Liesel;
+import com.l2jserver.datapack.ai.npc.Merchant.Lorel.Lorel;
+import com.l2jserver.datapack.ai.npc.Merchant.Lorenzo.Lorenzo;
+import com.l2jserver.datapack.ai.npc.Merchant.Lowell.Lowell;
+import com.l2jserver.datapack.ai.npc.Merchant.Luka.Luka;
+import com.l2jserver.datapack.ai.npc.Merchant.Lumen.Lumen;
+import com.l2jserver.datapack.ai.npc.Merchant.Lyann.Lyann;
+import com.l2jserver.datapack.ai.npc.Merchant.Lynn.Lynn;
+import com.l2jserver.datapack.ai.npc.Merchant.Mailland.Mailland;
+import com.l2jserver.datapack.ai.npc.Merchant.MerchantGolem.MerchantGolem;
+import com.l2jserver.datapack.ai.npc.Merchant.Metar.Metar;
+import com.l2jserver.datapack.ai.npc.Merchant.Miflen.Miflen;
+import com.l2jserver.datapack.ai.npc.Merchant.Migel.Migel;
+import com.l2jserver.datapack.ai.npc.Merchant.Mina.Mina;
+import com.l2jserver.datapack.ai.npc.Merchant.Mion.Mion;
+import com.l2jserver.datapack.ai.npc.Merchant.Morrison.Morrison;
+import com.l2jserver.datapack.ai.npc.Merchant.Natasha.Natasha;
+import com.l2jserver.datapack.ai.npc.Merchant.Neagel.Neagel;
+import com.l2jserver.datapack.ai.npc.Merchant.Nedy.Nedy;
+import com.l2jserver.datapack.ai.npc.Merchant.Nestle.Nestle;
+import com.l2jserver.datapack.ai.npc.Merchant.Nils.Nils;
+import com.l2jserver.datapack.ai.npc.Merchant.OfficerTolonis.OfficerTolonis;
+import com.l2jserver.datapack.ai.npc.Merchant.Onyx.Onyx;
+import com.l2jserver.datapack.ai.npc.Merchant.Owaking.Owaking;
+import com.l2jserver.datapack.ai.npc.Merchant.Paint.Paint;
+import com.l2jserver.datapack.ai.npc.Merchant.Pano.Pano;
+import com.l2jserver.datapack.ai.npc.Merchant.Papuma.Papuma;
+import com.l2jserver.datapack.ai.npc.Merchant.Payel.Payel;
+import com.l2jserver.datapack.ai.npc.Merchant.PetManager.Annette.Annette;
+import com.l2jserver.datapack.ai.npc.Merchant.PetManager.Cooper.Cooper;
+import com.l2jserver.datapack.ai.npc.Merchant.PetManager.Joey.Joey;
+import com.l2jserver.datapack.ai.npc.Merchant.PetManager.Lemper.Lemper;
+import com.l2jserver.datapack.ai.npc.Merchant.PetManager.Lundy.Lundy;
+import com.l2jserver.datapack.ai.npc.Merchant.PetManager.Martin.Martin;
+import com.l2jserver.datapack.ai.npc.Merchant.PetManager.Mickey.Mickey;
+import com.l2jserver.datapack.ai.npc.Merchant.PetManager.Nelson.Nelson;
+import com.l2jserver.datapack.ai.npc.Merchant.PetManager.Rood.Rood;
+import com.l2jserver.datapack.ai.npc.Merchant.PetManager.Saroyan.Saroyan;
+import com.l2jserver.datapack.ai.npc.Merchant.PetManager.Waters.Waters;
+import com.l2jserver.datapack.ai.npc.Merchant.PetManager.Woods.Woods;
+import com.l2jserver.datapack.ai.npc.Merchant.Philly.Philly;
+import com.l2jserver.datapack.ai.npc.Merchant.Phojett.Phojett;
+import com.l2jserver.datapack.ai.npc.Merchant.Plani.Plani;
+import com.l2jserver.datapack.ai.npc.Merchant.Poesia.Poesia;
+import com.l2jserver.datapack.ai.npc.Merchant.Prouse.Prouse;
+import com.l2jserver.datapack.ai.npc.Merchant.Pupu.Pupu;
+import com.l2jserver.datapack.ai.npc.Merchant.Raban.Raban;
+import com.l2jserver.datapack.ai.npc.Merchant.Radia.Radia;
+import com.l2jserver.datapack.ai.npc.Merchant.Rahel.Rahel;
+import com.l2jserver.datapack.ai.npc.Merchant.Raik.Raik;
+import com.l2jserver.datapack.ai.npc.Merchant.Rapin.Rapin;
+import com.l2jserver.datapack.ai.npc.Merchant.Ratriya.Ratriya;
+import com.l2jserver.datapack.ai.npc.Merchant.Raudia.Raudia;
+import com.l2jserver.datapack.ai.npc.Merchant.Reep.Reep;
+import com.l2jserver.datapack.ai.npc.Merchant.Reeya.Reeya;
+import com.l2jserver.datapack.ai.npc.Merchant.Rene.Rene;
+import com.l2jserver.datapack.ai.npc.Merchant.Rex.Rex;
+import com.l2jserver.datapack.ai.npc.Merchant.Robre.Robre;
+import com.l2jserver.datapack.ai.npc.Merchant.Rogen.Rogen;
+import com.l2jserver.datapack.ai.npc.Merchant.Rolento.Rolento;
+import com.l2jserver.datapack.ai.npc.Merchant.Romas.Romas;
+import com.l2jserver.datapack.ai.npc.Merchant.Ronaldo.Ronaldo;
+import com.l2jserver.datapack.ai.npc.Merchant.Rouge.Rouge;
+import com.l2jserver.datapack.ai.npc.Merchant.Rouke.Rouke;
+import com.l2jserver.datapack.ai.npc.Merchant.Rumba.Rumba;
+import com.l2jserver.datapack.ai.npc.Merchant.Rupert.Rupert;
+import com.l2jserver.datapack.ai.npc.Merchant.Sabrin.Sabrin;
+import com.l2jserver.datapack.ai.npc.Merchant.SalesmanCat.SalesmanCat;
+import com.l2jserver.datapack.ai.npc.Merchant.Salient.Salient;
+import com.l2jserver.datapack.ai.npc.Merchant.Sandra.Sandra;
+import com.l2jserver.datapack.ai.npc.Merchant.Sanford.Sanford;
+import com.l2jserver.datapack.ai.npc.Merchant.Sara.Sara;
+import com.l2jserver.datapack.ai.npc.Merchant.Scipio.Scipio;
+import com.l2jserver.datapack.ai.npc.Merchant.Shafa.Shafa;
+import com.l2jserver.datapack.ai.npc.Merchant.Shaling.Shaling;
+import com.l2jserver.datapack.ai.npc.Merchant.Shantra.Shantra;
+import com.l2jserver.datapack.ai.npc.Merchant.Shhadai.Shhadai;
+import com.l2jserver.datapack.ai.npc.Merchant.Shikon.Shikon;
+import com.l2jserver.datapack.ai.npc.Merchant.Shitara.Shitara;
+import com.l2jserver.datapack.ai.npc.Merchant.Shutner.Shutner;
+import com.l2jserver.datapack.ai.npc.Merchant.Silvia.Silvia;
+import com.l2jserver.datapack.ai.npc.Merchant.Simplon.Simplon;
+import com.l2jserver.datapack.ai.npc.Merchant.Singsing.Singsing;
+import com.l2jserver.datapack.ai.npc.Merchant.Solinus.Solinus;
+import com.l2jserver.datapack.ai.npc.Merchant.Sonia.Sonia;
+import com.l2jserver.datapack.ai.npc.Merchant.Sparky.Sparky;
+import com.l2jserver.datapack.ai.npc.Merchant.Stany.Stany;
+import com.l2jserver.datapack.ai.npc.Merchant.Sydney.Sydney;
+import com.l2jserver.datapack.ai.npc.Merchant.Tahoo.Tahoo;
+import com.l2jserver.datapack.ai.npc.Merchant.Tangen.Tangen;
+import com.l2jserver.datapack.ai.npc.Merchant.Terava.Terava;
+import com.l2jserver.datapack.ai.npc.Merchant.Tomanel.Tomanel;
+import com.l2jserver.datapack.ai.npc.Merchant.Triya.Triya;
+import com.l2jserver.datapack.ai.npc.Merchant.Tweety.Tweety;
+import com.l2jserver.datapack.ai.npc.Merchant.Uno.Uno;
+import com.l2jserver.datapack.ai.npc.Merchant.Urgal.Urgal;
+import com.l2jserver.datapack.ai.npc.Merchant.Uska.Uska;
+import com.l2jserver.datapack.ai.npc.Merchant.Varanket.Varanket;
+import com.l2jserver.datapack.ai.npc.Merchant.TraderVerona.TraderVerona;
+import com.l2jserver.datapack.ai.npc.Merchant.Treauvi.Treauvi;
+import com.l2jserver.datapack.ai.npc.Merchant.Veronika.Veronika;
+import com.l2jserver.datapack.ai.npc.Merchant.Viktor.Viktor;
+import com.l2jserver.datapack.ai.npc.Merchant.Violet.Violet;
+import com.l2jserver.datapack.ai.npc.Merchant.Vladimir.Vladimir;
+import com.l2jserver.datapack.ai.npc.Merchant.Volker.Volker;
+import com.l2jserver.datapack.ai.npc.Merchant.Vollodos.Vollodos;
+import com.l2jserver.datapack.ai.npc.Merchant.Weber.Weber;
+import com.l2jserver.datapack.ai.npc.Merchant.Woodley.Woodley;
+import com.l2jserver.datapack.ai.npc.Merchant.Woodrow.Woodrow;
+import com.l2jserver.datapack.ai.npc.Merchant.Zakone.Zakone;
+import com.l2jserver.datapack.ai.npc.Merchant.Zenith.Zenith;
+import com.l2jserver.datapack.ai.npc.Merchant.Zenkin.Zenkin;
 import com.l2jserver.datapack.ai.npc.MerchantOfMammon.MerchantOfMammon;
 import com.l2jserver.datapack.ai.npc.Minigame.Minigame;
 import com.l2jserver.datapack.ai.npc.MonumentOfHeroes.MonumentOfHeroes;
@@ -249,7 +488,6 @@ import com.l2jserver.datapack.ai.npc.Steward.ChamberlainBandello.ChamberlainBand
 import com.l2jserver.datapack.ai.npc.Steward.FarmChamberlain.FarmChamberlain;
 import com.l2jserver.datapack.ai.npc.Steward.OlMahumTamutak.OlMahumTamutak;
 import com.l2jserver.datapack.ai.npc.SubclassCertification.SubclassCertification;
-import com.l2jserver.datapack.ai.npc.Summons.MerchantGolem.GolemTrader;
 import com.l2jserver.datapack.ai.npc.Summons.Pets.BabyPets;
 import com.l2jserver.datapack.ai.npc.Summons.Pets.ImprovedBabyPets;
 import com.l2jserver.datapack.ai.npc.Summons.Servitors.Servitors;
@@ -346,8 +584,8 @@ import com.l2jserver.datapack.ai.npc.Teleports.Survivor.Survivor;
 import com.l2jserver.datapack.ai.npc.Teleports.TeleportToRaceTrack.TeleportToRaceTrack;
 import com.l2jserver.datapack.ai.npc.Teleports.TeleportToUndergroundColiseum.TeleportToUndergroundColiseum;
 import com.l2jserver.datapack.ai.npc.TerritoryManagers.TerritoryManagers;
-import com.l2jserver.datapack.ai.npc.Tolonis.Tolonis;
 import com.l2jserver.datapack.ai.npc.TownPets.TownPets;
+import com.l2jserver.datapack.ai.npc.TraderImmortality.TraderImmortality;
 import com.l2jserver.datapack.ai.npc.Tunatun.Tunatun;
 import com.l2jserver.datapack.ai.npc.VarkaSilenosSupport.VarkaSilenosSupport;
 import com.l2jserver.datapack.ai.npc.VigilImmortality.VigilImmortality;
@@ -392,12 +630,10 @@ public class AILoader {
 	
 	private static final Class<?>[] SCRIPTS = {
 		// NPC
-		Abercrombie.class,
 		AdventureGuildsman.class,
 		Alarm.class,
 		Alexandria.class,
 		ArenaManager.class,
-		Asamah.class,
 		AvantGarde.class,
 		BlackJudge.class,
 		BlackMarketeerOfMammon.class,
@@ -405,12 +641,10 @@ public class AILoader {
 		CastleAmbassador.class,
 		CastleBlacksmith.class,
 		CastleCourtMagician.class,
-		CastleMercenaryManager.class,
 		CastleSiegeManager.class,
 		CastleTeleporter.class,
 		CastleWarehouse.class,
 		Chandra.class,
-		ClanTrader.class,
 		ClassMaster.class,
 		CleftGateRed.class,
 		DimensionKeeper.class,
@@ -418,8 +652,6 @@ public class AILoader {
 		DragonVortex.class,
 		EchoCrystals.class,
 		Elmina.class,
-		FameManager.class,
-		Fisherman.class,
 		ForgeOfTheGods.class,
 		Rooney.class,
 		TarBeetle.class,
@@ -435,7 +667,6 @@ public class AILoader {
 		KetraOrcSupport.class,
 		Kier.class,
 		Kroon.class,
-		ManorManager.class,
 		MercenaryCaptain.class,
 		MerchantOfMammon.class,
 		Minigame.class,
@@ -452,7 +683,6 @@ public class AILoader {
 		Sirra.class,
 		Sobling.class,
 		SubclassCertification.class,
-		GolemTrader.class,
 		BabyPets.class,
 		ImprovedBabyPets.class,
 		Servitors.class,
@@ -477,6 +707,7 @@ public class AILoader {
 		TeleportToUndergroundColiseum.class,
 		TerritoryManagers.class,
 		TownPets.class,
+		TraderImmortality.class,
 		Tunatun.class,
 		VarkaSilenosSupport.class,
 		VigilImmortality.class,
@@ -490,7 +721,6 @@ public class AILoader {
 		FighterCoach.class,
 		KamaelCoach.class,
 		MageCoach.class,
-		Tolonis.class,
 		WarehouseKeeper.class,
 		WarehouseKeeperForChaotic.class,
 		WizardCoach.class,
@@ -667,6 +897,258 @@ public class AILoader {
 		DuskPriestessOren.class,
 		DuskPriestessRune.class,
 		DuskPriestessSchuttgart.class,
+		// Merchant
+		Abercrombie.class,
+		Acellopy.class,
+		Adrian.class,
+		Alexis.class,
+		Alisha.class,
+		Altar.class,
+		Anton.class,
+		Antonio.class,
+		Aren.class,
+		Ariel.class,
+		Arodin.class,
+		Asama.class,
+		Astrid.class,
+		Atan.class,
+		Auzendurof.class,
+		Bandor.class,
+		Berynel.class,
+		Borodin.class,
+		Burns.class,
+		Candice.class,
+		Carson.class,
+		Cel.class,
+		Cema.class,
+		Chali.class,
+		Clancy.class,
+		Cona.class,
+		Cullinas.class,
+		Daeger.class,
+		Daeronees.class,
+		Dani.class,
+		Denkus.class,
+		Denver.class,
+		Desian.class,
+		Dindin.class,
+		Diyabu.class,
+		Dolphren.class,
+		Donai.class,
+		Drawin.class,
+		Drumond.class,
+		Edroc.class,
+		Elena.class,
+		Elliany.class,
+		Enverun.class,
+		Erinu.class,
+		Espen.class,
+		FarmFeedSeller.class,
+		Felton.class,
+		Fundin.class,
+		Gaiman.class,
+		Galicbredo.class,
+		Galladuchi.class,
+		Garette.class,
+		Garita.class,
+		Gentler.class,
+		Giordo.class,
+		Grabner.class,
+		Green.class,
+		Greta.class,
+		Groot.class,
+		Hakran.class,
+		Hallypia.class,
+		Hans.class,
+		Harmony.class,
+		Hedinger.class,
+		Helmut.class,
+		Helvetia.class,
+		Hittchi.class,
+		Holly.class,
+		Hullia.class,
+		Ilia.class,
+		Iria.class,
+		Iz.class,
+		Jackson.class,
+		Jaka.class,
+		Jakaron.class,
+		Janne.class,
+		Jouge.class,
+		Judith.class,
+		Jumara.class,
+		Karai.class,
+		Katrine.class,
+		Kc.class,
+		Kiki.class,
+		Kitzka.class,
+		Koram.class,
+		Kunai.class,
+		Lanna.class,
+		Lara.class,
+		Lars.class,
+		Lector.class,
+		Leon.class,
+		Liesel.class,
+		Lorel.class,
+		Lorenzo.class,
+		Luka.class,
+		Lumen.class,
+		Lyann.class,
+		Lynn.class,
+		Mailland.class,
+		MerchantGolem.class,
+		Metar.class,
+		Miflen.class,
+		Migel.class,
+		Mina.class,
+		Mion.class,
+		Natasha.class,
+		Neagel.class,
+		Nedy.class,
+		Nestle.class,
+		Nils.class,
+		OfficerTolonis.class,
+		Onyx.class,
+		Owaking.class,
+		Paint.class,
+		Pano.class,
+		Papuma.class,
+		Payel.class,
+		Philly.class,
+		Phojett.class,
+		Plani.class,
+		Poesia.class,
+		Prouse.class,
+		Pupu.class,
+		Raban.class,
+		Radia.class,
+		Rahel.class,
+		Raik.class,
+		Rapin.class,
+		Ratriya.class,
+		Raudia.class,
+		Reep.class,
+		Reeya.class,
+		Rene.class,
+		Rex.class,
+		Robre.class,
+		Rogen.class,
+		Rolento.class,
+		Romas.class,
+		Ronaldo.class,
+		Rouge.class,
+		Rouke.class,
+		Rumba.class,
+		Rupert.class,
+		Sabrin.class,
+		SalesmanCat.class,
+		Salient.class,
+		Sandra.class,
+		Sara.class,
+		Shafa.class,
+		Shaling.class,
+		Shantra.class,
+		Shhadai.class,
+		Shikon.class,
+		Shitara.class,
+		Shutner.class,
+		Silvia.class,
+		Simplon.class,
+		Singsing.class,
+		Sonia.class,
+		Sparky.class,
+		Stany.class,
+		Sydney.class,
+		Tahoo.class,
+		Tangen.class,
+		Terava.class,
+		Tomanel.class,
+		Triya.class,
+		Tweety.class,
+		Uno.class,
+		Urgal.class,
+		Uska.class,
+		Varanket.class,
+		TraderVerona.class,
+		Treauvi.class,
+		Veronika.class,
+		Viktor.class,
+		Violet.class,
+		Vladimir.class,
+		Volker.class,
+		Vollodos.class,
+		Weber.class,
+		Woodley.class,
+		Woodrow.class,
+		Zakone.class,
+		Zenith.class,
+		Zenkin.class,
+		// Fisher
+		Batidae.class,
+		Berix.class,
+		Bleaker.class,
+		Brang.class,
+		Cyano.class,
+		Eindarkner.class,
+		Hilgendorf.class,
+		Galba.class,
+		Hufs.class,
+		Klaw.class,
+		Klufe.class,
+		Lanosco.class,
+		Linneaus.class,
+		Litulon.class,
+		Mishini.class,
+		Monakan.class,
+		Ofulle.class,
+		Ogord.class,
+		Pamfus.class,
+		Perelin.class,
+		Platis.class,
+		Ropfi.class,
+		Willeri.class,
+		// Castle Mercenary
+		Arvid.class,
+		Eldon.class,
+		Gompers.class,
+		Greenspan.class,
+		Kendrew.class,
+		Lowell.class,
+		Morrison.class,
+		Sanford.class,
+		Solinus.class,
+		// Castle Merchant
+		ManorManager1.class,
+		ManorManager2.class,
+		ManorManager3.class,
+		ManorManager4.class,
+		ManorManager5.class,
+		ManorManager6.class,
+		ManorManager7.class,
+		ManorManager8.class,
+		ManorManager9.class,
+		ManorManager10.class,
+		ManorManager11.class,
+		ManorManager12.class,
+		ManorManager13.class,
+		ManorManager14.class,
+		// Pet Manager
+		Annette.class,
+		Cooper.class,
+		Joey.class,
+		Lemper.class,
+		Lundy.class,
+		Martin.class,
+		Mickey.class,
+		Nelson.class,
+		Rood.class,
+		Saroyan.class,
+		Waters.class,
+		Woods.class,
+		// Reputation Manager
+		Lepidus.class,
+		Scipio.class,
 		// Fantasy Isle
 		MC_Show.class,
 		HandysBlockCheckerEvent.class,
