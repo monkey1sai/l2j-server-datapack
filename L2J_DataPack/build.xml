@@ -49,7 +49,6 @@
                 <exclude name="log/**"/>
                 <exclude name="data/clans/**"/>
                 <exclude name="data/crests/**"/>
-                <exclude name="**.svn**"/>
                 <exclude name="**/*.class"/>
                 <include name="**/*.*"/>
 	        </fileset>
@@ -68,36 +67,21 @@
 		
     	<tstamp>
     	  <format property="build.tstamp"
-    	              pattern="yyyyMMdd_HHmm"/>
+    	              pattern="yyyy-MM-dd HH:mm"/>
     	</tstamp>
 
+        <exec dir="." executable="git" outputproperty="l2j.revision" failifexecutionfails="false">
+            <arg line="rev-parse --short HEAD"/>
+        </exec>
 
-    	<exec dir="." executable="svnversion" outputproperty="l2j.revision"
-			  failifexecutionfails="false">
-    	  <arg line="-n ."/>
-    	</exec>
-    	
     	<concat destfile="${build.dist}/config/l2jdp-version.properties">
-    	version=${l2j.revision}
-    	builddate=${build.tstamp} 
-
-   Detailed Info:
-    	</concat>  
-
-   
-        <concat destfile="${build.dist}/config/l2jdp-version.properties" append="true">
-		<filelist dir="${src}/../.svn/" files="entries"/> 
-         <filterchain>
-         <headfilter lines="5" skip="4"/>
-             </filterchain>
-        </concat>
-
+version=${l2j.revision}
+builddate=${build.tstamp}
+    	</concat>
 	</target>
  
     <target name="clean"
             description="Deletes the zip file">
-
     	<delete dir="${build}"/>
     </target>
-
 </project>
