@@ -164,7 +164,7 @@ public class Tp_Teleporter extends Teleporter {
 					}
 				}
 				case REPLY_ITEM_LIST -> {
-					MultisellData.getInstance().separateAndSend(323780001, talker, (L2Npc) npc, false);
+					MultisellData.getInstance().separateAndSend(643, talker, (L2Npc) npc, false);
 				}
 				case REPLY_TELE_HANDYS_ARENA -> {
 					talker.teleToLocation(-57328, -60566, -2320);

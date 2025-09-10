@@ -115,7 +115,6 @@ import com.l2jserver.datapack.handlers.admincommandhandlers.AdminUnblockIp;
 import com.l2jserver.datapack.handlers.admincommandhandlers.AdminVitality;
 import com.l2jserver.datapack.handlers.admincommandhandlers.AdminZone;
 import com.l2jserver.datapack.handlers.bypasshandlers.Augment;
-import com.l2jserver.datapack.handlers.bypasshandlers.Buy;
 import com.l2jserver.datapack.handlers.bypasshandlers.BuyShadowItem;
 import com.l2jserver.datapack.handlers.bypasshandlers.ChatLink;
 import com.l2jserver.datapack.handlers.bypasshandlers.ClanWarehouse;
@@ -358,7 +357,6 @@ public class MasterHandler {
 	
 	private static final Class<?>[] BYPASS_HANDLERS = {
 		Augment.class,
-		Buy.class,
 		BuyShadowItem.class,
 		ChatLink.class,
 		ClanWarehouse.class,

@@ -24,7 +24,6 @@ import com.l2jserver.gameserver.instancemanager.ClanHallManager;
 import com.l2jserver.gameserver.model.ClanPrivilege;
 import com.l2jserver.gameserver.model.actor.L2Npc;
 import com.l2jserver.gameserver.model.actor.instance.L2PcInstance;
-import com.l2jserver.gameserver.model.actor.instance.L2PetInstance;
 import com.l2jserver.gameserver.model.entity.ClanHall;
 import com.l2jserver.gameserver.model.events.impl.character.player.PlayerMenuSelected;
 import com.l2jserver.gameserver.network.serverpackets.NpcHtmlMessage;
@@ -48,14 +47,14 @@ public class Janitor extends AbstractNpcAI {
 	
 	private static final String fnEvolutionSuccess = "data/html/clanHallDoormen/pet_evolution_success.htm";
 	private static final String fnEvolutionStopped = "data/html/clanHallDoormen/pet_evolution_stopped.htm";
-	private static final String fnEvolveMany_pet = "data/html/clanHallDoormen/pet_evolution_many_pet.htm";
-	private static final String fnEvolveNoPet_pet = "data/html/clanHallDoormen/pet_evolution_no_pet.htm";
-	private static final String fnNoPet_pet = "data/html/clanHallDoormen/pet_evolution_farpet.htm";
-	private static final String fnTooFar_pet = "data/html/clanHallDoormen/pet_evolution_farpet.htm";
-	private static final String fnNoProperPet_pet = "data/html/clanHallDoormen/pet_evolution_farpet.htm";
-	private static final String fnNotEnoughMinLv_pet = "data/html/clanHallDoormen/pet_evolution_level.htm";
-	private static final String fnNotEnoughLevel_pet = "data/html/clanHallDoormen/pet_evolution_level.htm";
-	private static final String fnNoItem_pet = "data/html/clanHallDoormen/pet_evolution_no_pet.htm";
+	private static final String fnEvolveManyPet = "data/html/clanHallDoormen/pet_evolution_many_pet.htm";
+	private static final String fnEvolveNoPetPet = "data/html/clanHallDoormen/pet_evolution_no_pet.htm";
+	private static final String fnNoPetPet = "data/html/clanHallDoormen/pet_evolution_farpet.htm";
+	private static final String fnTooFarPet = "data/html/clanHallDoormen/pet_evolution_farpet.htm";
+	private static final String fnNoProperPetPet = "data/html/clanHallDoormen/pet_evolution_farpet.htm";
+	private static final String fnNotEnoughMinLvPet = "data/html/clanHallDoormen/pet_evolution_level.htm";
+	private static final String fnNotEnoughLevelPet = "data/html/clanHallDoormen/pet_evolution_level.htm";
+	private static final String fnNoItemPet = "data/html/clanHallDoormen/pet_evolution_no_pet.htm";
 	
 	private static final int MS_ASK_BACK = 0;
 	private static final int MS_ASK_OPENCLOSE_DOOR = -203;
@@ -177,33 +176,37 @@ public class Janitor extends AbstractNpcAI {
 						
 						final var checkMinLvPet = npc.getTemplate().getParameters().getInt("check_min_lv_pet" + reply, 0);
 						final var skipCheckSummonPet = npc.getTemplate().getParameters().getInt("skip_chk_summon_pet" + reply, 0);
+						
 						if (itemBabyPet == -1) {
 							return;
 						}
+						
 						if (getQuestItemsCount(talker, itemBabyPet) >= 2) {
-							showPage(talker, fnEvolveMany_pet);
+							showPage(talker, fnEvolveManyPet);
 							return;
 						}
+						
 						if ((getQuestItemsCount(talker, itemBabyPet) <= 0) && (getQuestItemsCount(talker, itemGrownPet) > 0)) {
-							showPage(talker, fnEvolveNoPet_pet);
+							showPage(talker, fnEvolveNoPetPet);
 							return;
 						}
+						
 						if (skipCheckSummonPet == 0) {
-							final var c0 = (L2PetInstance) talker.getSummon();
-							if (c0 == null) {
-								showPage(talker, fnNoPet_pet);
+							final var c0 = talker.getSummon();
+							if (c0 == null && !talker.hasPet()) {
+								showPage(talker, fnNoPetPet);
 								return;
 							}
 							if (npc.calculateDistance(c0, true, false) >= 200) {
-								showPage(talker, fnTooFar_pet);
+								showPage(talker, fnTooFarPet);
 								return;
 							}
 							if (c0.getId() != classIdBabyPet) {
-								showPage(talker, fnNoProperPet_pet);
+								showPage(talker, fnNoProperPetPet);
 								return;
 							}
 							if ((c0.getLevel() < minLvPet) && (checkMinLvPet == 1)) {
-								showPage(talker, fnNotEnoughMinLv_pet);
+								showPage(talker, fnNotEnoughMinLvPet);
 								return;
 							}
 						}
@@ -211,16 +214,25 @@ public class Janitor extends AbstractNpcAI {
 						final var item0 = talker.getInventory().getItemByItemId(itemBabyPet);
 						if (item0 != null) {
 							if (item0.getEnchantLevel() < minLvPet) {
-								showPage(talker, fnNotEnoughLevel_pet);
+								showPage(talker, fnNotEnoughLevelPet);
 								return;
 							}
-							if (Evolve.doEvolve(talker, npc, itemBabyPet, itemGrownPet, minLvPet)) {
-								showPage(talker, fnEvolutionSuccess);
+							
+							if (skipCheckSummonPet == 0) {
+								Evolve.doEvolve(talker, npc, itemBabyPet, itemGrownPet, item0.getEnchantLevel());
 							} else {
-								showPage(talker, fnEvolutionStopped);
+								final var c0 = talker.getSummon();
+								if (c0 != null || talker.hasPet() && skipCheckSummonPet == 1) {
+									showPage(talker, fnEvolutionStopped);
+									return;
+								}
+								
+								Evolve.doRestore(talker, npc, itemBabyPet, itemGrownPet, minLvPet);
 							}
+							
+							showPage(talker, fnEvolutionSuccess);
 						} else {
-							showPage(talker, fnNoItem_pet);
+							showPage(talker, fnNoItemPet);
 						}
 					}
 				}

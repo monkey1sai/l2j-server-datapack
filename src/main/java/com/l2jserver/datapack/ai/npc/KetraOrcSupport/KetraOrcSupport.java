@@ -56,9 +56,7 @@ public final class KetraOrcSupport extends AbstractNpcAI {
 	private static final int KADUN = 31370; // Hierarch
 	private static final int WAHKAN = 31371; // Messenger
 	private static final int ASEFA = 31372; // Soul Guide
-	private static final int ATAN = 31373; // Grocer
 	private static final int JAFF = 31374; // Warehouse Keeper
-	private static final int JUMARA = 31375; // Trader
 	
 	// Items
 	private static final int HORN = 7186;
@@ -83,7 +81,7 @@ public final class KetraOrcSupport extends AbstractNpcAI {
 	}
 	
 	public KetraOrcSupport() {
-		bindFirstTalk(KADUN, WAHKAN, ASEFA, ATAN, JAFF, JUMARA);
+		bindFirstTalk(KADUN, WAHKAN, ASEFA, JAFF);
 		bindTalk(ASEFA, JAFF);
 		bindStartNpc(JAFF);
 	}
@@ -128,19 +126,8 @@ public final class KetraOrcSupport extends AbstractNpcAI {
 			case ASEFA:
 				htmltext = (AllianceLevel > 0) ? (AllianceLevel < 3) ? "31372-01.html" : "31372-04.html" : "31372-03.html";
 				break;
-			case ATAN:
-				htmltext = (AllianceLevel > 0) ? "31373-friend.html" : "31373-no.html";
-				break;
 			case JAFF:
 				htmltext = (AllianceLevel > 0) ? (AllianceLevel == 1) ? "31374-01.html" : "31374-02.html" : "31374-no.html";
-				break;
-			case JUMARA:
-				htmltext = switch (AllianceLevel) {
-					case 1, 2 -> "31375-01.html";
-					case 3, 4 -> "31375-02.html";
-					case 5 -> "31375-03.html";
-					default -> "31375-no.html";
-				};
 				break;
 		}
 		return htmltext;

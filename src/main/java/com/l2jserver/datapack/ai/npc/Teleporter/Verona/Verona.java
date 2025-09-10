@@ -81,6 +81,9 @@ public class Verona extends Teleporter {
 					}
 				}
 			}
+			default -> {
+				super.onMenuSelected(event);
+			}
 		}
 	}
 }

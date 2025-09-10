@@ -45,6 +45,21 @@ public class Saius extends Chamberlain {
 		new TelPosList(1010102, new Location(-28327, 155125, -3496), 500)
 	};
 	
+	private static final BuySellList[] _sellList0 = new BuySellList[] {
+		new BuySellList(6316, 10, 0.000000, 0), // advdeluxe_food_for_strider
+		new BuySellList(7015, 10, 0.000000, 0), // pledge_shield_castle
+		new BuySellList(6838, 10, 0.000000, 0), // circlet_of_gludio
+		new BuySellList(9607, 10, 0.000000, 0), // lbracelet_castle_gludio
+		new BuySellList(13686, 10, 0.000000, 0), // sealed_knight_cloak_of_feud
+		new BuySellList(8751, 10, 0.500000, 1), // rare_70_a
+		new BuySellList(8752, 10, 0.250000, 1), // rare_75_s
+		new BuySellList(8761, 10, 0.166000, 1), // unique_70_a
+		new BuySellList(9898, 10, 0.125000, 1), // scroll_of_high_sp
+		new BuySellList(16115, 10, 0.042000, 1), // rp_gold_horn_cap_i
+		new BuySellList(8762, 10, 0.083000, 1), // unique_75_s
+		new BuySellList(16127, 10, 1.000000, 10) // gold_horn_cap_piece
+	};
+	
 	private static final int npcId = 35100;
 	
 	public Saius() {
@@ -52,6 +67,8 @@ public class Saius extends Chamberlain {
 		
 		super.position1 = _position1;
 		super.position2 = _position2;
+		
+		super.sellList0 = buildBuySellList(_sellList0, npcId, 0);
 		
 		super.fnSetGate = "data/html/chamberlain/chamberlain_saul005.htm";
 		super.fnMyFortressStatus = "data/html/chamberlain/chamberlain_saius070.htm";

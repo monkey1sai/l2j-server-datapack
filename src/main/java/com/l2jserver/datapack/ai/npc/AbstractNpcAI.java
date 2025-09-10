@@ -18,15 +18,25 @@
  */
 package com.l2jserver.datapack.ai.npc;
 
+import static com.l2jserver.gameserver.config.Configuration.general;
+
+import com.l2jserver.gameserver.data.xml.impl.BuyListData;
+import com.l2jserver.gameserver.datatables.ItemTable;
 import com.l2jserver.gameserver.model.L2Party;
 import com.l2jserver.gameserver.model.Location;
 import com.l2jserver.gameserver.model.actor.L2Character;
 import com.l2jserver.gameserver.model.actor.L2Npc;
 import com.l2jserver.gameserver.model.actor.instance.L2MonsterInstance;
 import com.l2jserver.gameserver.model.actor.instance.L2PcInstance;
+import com.l2jserver.gameserver.model.buylist.L2BuyList;
+import com.l2jserver.gameserver.model.buylist.Product;
 import com.l2jserver.gameserver.model.quest.Quest;
 import com.l2jserver.gameserver.network.NpcStringId;
+import com.l2jserver.gameserver.network.serverpackets.ActionFailed;
+import com.l2jserver.gameserver.network.serverpackets.BuyList;
+import com.l2jserver.gameserver.network.serverpackets.ExBuySellList;
 import com.l2jserver.gameserver.network.serverpackets.NpcSay;
+import com.l2jserver.gameserver.network.serverpackets.ShopPreviewList;
 import com.l2jserver.gameserver.network.serverpackets.SocialAction;
 import com.l2jserver.gameserver.util.Broadcast;
 
@@ -185,6 +195,80 @@ public abstract class AbstractNpcAI extends Quest {
 					pc.teleToLocation(loc);
 				}
 			}
+		}
+	}
+	
+	/**
+	 * Builds the sell list for the trader
+	 * @param sellList
+	 * @param npcId
+	 * @param index
+	 * @return
+	 */
+	protected L2BuyList buildBuySellList(BuySellList[] sellList, int npcId, int index) {
+		final var buyList = new L2BuyList(Integer.valueOf(npcId + "" + index));
+		
+		for (var list : sellList) {
+			double baseTax = (list.tax() / 100);
+			long delay = -1;
+			long count = -1;
+			
+			if (list.delay() > 0.000000) {
+				delay = (long) (60 / list.delay());
+			}
+			if (list.count() > 0) {
+				count = list.count();
+			}
+			
+			final var item = ItemTable.getInstance().getTemplate(list.itemId());
+			if (item != null) {
+				buyList.addProduct(new Product(buyList.getListId(), item, item.getReferencePrice(), baseTax, delay, count));
+			}
+		}
+		
+		buyList.addAllowedNpc(npcId);
+		
+		BuyListData.getInstance().addBuyList(buyList);
+		
+		return buyList;
+	}
+	
+	/**
+	 * Opens the sell list
+	 * @param talker
+	 * @param npc
+	 * @param buyList
+	 */
+	protected void showBuySell(L2PcInstance talker, L2Npc npc, L2BuyList buyList) {
+		final var taxRate = npc.getCastle().getTaxRate();
+		
+		talker.setInventoryBlockingStatus(true);
+		talker.sendPacket(new BuyList(buyList, talker.getAdena(), taxRate));
+		talker.sendPacket(new ExBuySellList(talker, false));
+		talker.sendPacket(ActionFailed.STATIC_PACKET);
+	}
+	
+	/**
+	 * Opens the preview list
+	 * @param talker
+	 * @param npc
+	 * @param buyList
+	 */
+	protected void sellPreview(L2PcInstance talker, L2Npc npc, L2BuyList buyList) {
+		if (!general().allowWear()) {
+			return;
+		}
+		
+		talker.setInventoryBlockingStatus(true);
+		talker.sendPacket(new ShopPreviewList(buyList, talker.getAdena(), talker.getExpertiseLevel()));
+	}
+	
+	/**
+	 * 
+	 */
+	public record BuySellList(int itemId, double tax, double delay, int count, int type) {
+		public BuySellList(int itemId, double tax, double delay, int count) {
+			this(itemId, tax, delay, count, 0);
 		}
 	}
 }

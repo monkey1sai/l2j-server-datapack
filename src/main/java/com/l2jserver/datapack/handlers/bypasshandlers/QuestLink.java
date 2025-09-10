@@ -208,7 +208,9 @@ public class QuestLink implements IBypassHandler {
 					// Copy the current L2PcInstance QuestState in the QuestState table
 					final var qs = player.getQuestState(quest.getName());
 					if (qs != null) {
-						states.add(qs);
+						if (qs.isStarted()) {
+							states.add(qs);
+						}
 					}
 				}
 			}

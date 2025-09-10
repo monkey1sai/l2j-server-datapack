@@ -48,6 +48,58 @@ public class Ron extends Custodian {
 		new TelPosList(1010036, new Location(17430, 170103, -3506), 500)
 	};
 	
+	private static final BuySellList[] _sellList0 = new BuySellList[] {
+		new BuySellList(6902, 10, 0.000000, 0), // pledge_shield_agit
+		new BuySellList(1829, 10, 1.000000, 5), // scroll_of_escape_to_agit
+		new BuySellList(5169, 10, 1.000000, 5) // deluxe_food_for_strider
+	};
+	
+	private static final BuySellList[] _sellList1 = new BuySellList[] {
+		new BuySellList(6902, 10, 0.000000, 0), // pledge_shield_agit
+		new BuySellList(1829, 10, 1.000000, 5), // scroll_of_escape_to_agit
+		new BuySellList(5858, 10, 0.500000, 1), // blessed_scroll_of_escape_to_agit
+		new BuySellList(5169, 10, 1.000000, 10), // deluxe_food_for_strider
+		new BuySellList(7128, 10, 1.000000, 1), // escape_scroll_heiness
+		new BuySellList(7131, 10, 1.000000, 1), // escape_scroll_hunter
+		new BuySellList(8643, 10, 0.500000, 1), // rp_elixir_of_life_b
+		new BuySellList(8648, 10, 0.500000, 1) // rp_elixir_of_mental_c
+	};
+	
+	private static final BuySellList[] _sellList2 = new BuySellList[] {
+		new BuySellList(6902, 10, 0.000000, 0), // pledge_shield_agit
+		new BuySellList(1829, 10, 1.000000, 5), // scroll_of_escape_to_agit
+		new BuySellList(5858, 10, 1.000000, 1), // blessed_scroll_of_escape_to_agit
+		new BuySellList(5169, 10, 1.000000, 10), // deluxe_food_for_strider
+		new BuySellList(7128, 10, 1.000000, 1), // escape_scroll_heiness
+		new BuySellList(7131, 10, 1.000000, 1), // escape_scroll_hunter
+		new BuySellList(7585, 10, 0.500000, 1), // ticket_kukaburo_ocarina
+		new BuySellList(6926, 10, 1.000000, 1), // rp_lesser_healing_potion
+		new BuySellList(6929, 10, 1.000000, 1), // rp_antidote
+		new BuySellList(6931, 10, 1.000000, 1), // rp_bandage
+		new BuySellList(6920, 10, 1.000000, 1), // rp_fish_oil_average
+		new BuySellList(7691, 10, 1.000000, 1), // rp_maidens_hairpin
+		new BuySellList(6925, 10, 1.000000, 1), // rp_monocle
+		new BuySellList(6940, 10, 1.000000, 1), // rp_masktype_a_potion
+		new BuySellList(6941, 10, 1.000000, 1), // rp_masktype_b_potion
+		new BuySellList(6942, 10, 1.000000, 1), // rp_masktype_c_potion
+		new BuySellList(6954, 10, 1.000000, 1), // rp_dye_s1c1_d
+		new BuySellList(6955, 10, 1.000000, 1), // rp_dye_s1d1_d
+		new BuySellList(6956, 10, 1.000000, 1), // rp_dye_c1s1_d
+		new BuySellList(6957, 10, 1.000000, 1), // rp_dye_c1d1_d
+		new BuySellList(6958, 10, 1.000000, 1), // rp_dye_d1s1_d
+		new BuySellList(6959, 10, 1.000000, 1), // rp_dye_d1c1_d
+		new BuySellList(6960, 10, 1.000000, 1), // rp_dye_i1m1_d
+		new BuySellList(6961, 10, 1.000000, 1), // rp_dye_i1w1_d
+		new BuySellList(6962, 10, 1.000000, 1), // rp_dye_m1i1_d
+		new BuySellList(6963, 10, 1.000000, 1), // rp_dye_m1w1_d
+		new BuySellList(6964, 10, 1.000000, 1), // rp_dye_w1i1_d
+		new BuySellList(6965, 10, 1.000000, 1), // rp_dye_w1m1_d
+		new BuySellList(8643, 10, 0.500000, 1), // rp_elixir_of_life_b
+		new BuySellList(8648, 10, 0.500000, 1), // rp_elixir_of_mental_c
+		new BuySellList(9898, 10, 0.125000, 1), // scroll_of_high_sp
+		new BuySellList(952, 10, 0.500000, 1) // scrl_of_ench_am_c
+	};
+	
 	private static final int npcId = 35403;
 	
 	public Ron() {
@@ -55,5 +107,9 @@ public class Ron extends Custodian {
 		
 		super.position1 = _position1;
 		super.position2 = _position2;
+		
+		super.sellList0 = buildBuySellList(_sellList0, npcId, 0);
+		super.sellList1 = buildBuySellList(_sellList1, npcId, 1);
+		super.sellList2 = buildBuySellList(_sellList2, npcId, 2);
 	}
 }
