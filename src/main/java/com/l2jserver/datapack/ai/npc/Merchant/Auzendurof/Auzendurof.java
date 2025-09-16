@@ -35,7 +35,6 @@ public class Auzendurof extends Merchant {
 		new BuySellList(219, 20, 0.000000, 0), // sword_breaker
 		new BuySellList(273, 20, 0.000000, 0), // composition_bow
 		new BuySellList(155, 20, 0.000000, 0), // buzdygan
-		new BuySellList(88, 20, 0.000000, 0), // morning_star
 		new BuySellList(87, 20, 0.000000, 0), // iron_hammer
 		new BuySellList(16, 20, 0.000000, 0), // long_spear
 		new BuySellList(123, 20, 0.000000, 0), // saber
