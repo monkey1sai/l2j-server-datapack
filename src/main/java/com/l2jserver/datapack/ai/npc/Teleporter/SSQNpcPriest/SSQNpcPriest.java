@@ -593,19 +593,17 @@ public abstract class SSQNpcPriest extends AbstractNpcAI {
 								}
 								
 								if (ss.getSSQPrevWinner() != SevenSigns.CABAL_DUSK) {
-									if (ss.getSSQPrevWinner() != SevenSigns.CABAL_DUSK) {
-										var i0 = ss.getDepositedSSQItemCount(talker, SevenSigns.SEAL_STONE_BLUE_ID);
-										var i1 = ss.getDepositedSSQItemCount(talker, SevenSigns.SEAL_STONE_GREEN_ID);
-										var i2 = ss.getDepositedSSQItemCount(talker, SevenSigns.SEAL_STONE_RED_ID);
-										var i3 = ((i0 * 1) + (i1 * 1)) + (i2 * 10);
-										if (ss.addSSQMember(talker, SevenSigns.CABAL_DUSK, SevenSigns.SEAL_AVARICE, 2, i3, i4) == 0) {
-											return;
-										}
-									} else {
-										var i3 = 0;
-										if (ss.addSSQMember(talker, SevenSigns.CABAL_DUSK, SevenSigns.SEAL_AVARICE, 2, i3, i4) == 0) {
-											return;
-										}
+									var i0 = ss.getDepositedSSQItemCount(talker, SevenSigns.SEAL_STONE_BLUE_ID);
+									var i1 = ss.getDepositedSSQItemCount(talker, SevenSigns.SEAL_STONE_GREEN_ID);
+									var i2 = ss.getDepositedSSQItemCount(talker, SevenSigns.SEAL_STONE_RED_ID);
+									var i3 = ((i0 * 1) + (i1 * 1)) + (i2 * 10);
+									if (ss.addSSQMember(talker, SevenSigns.CABAL_DUSK, SevenSigns.SEAL_AVARICE, 2, i3, i4) == 0) {
+										return;
+									}
+								} else {
+									var i3 = 0;
+									if (ss.addSSQMember(talker, SevenSigns.CABAL_DUSK, SevenSigns.SEAL_AVARICE, 2, i3, i4) == 0) {
+										return;
 									}
 								}
 							} else {
