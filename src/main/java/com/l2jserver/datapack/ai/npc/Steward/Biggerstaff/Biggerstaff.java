@@ -145,7 +145,7 @@ public class Biggerstaff extends Steward {
 		super.fnNoAuthority = "data/html/clanHallManager/steward_biggerstaff017.htm";
 		super.fnIsUnderSiege = "data/html/clanHallManager/steward_biggerstaff018.htm";
 		
-		super.fnManageRegen = "data/html/clanHallManager/ol_mahum_AgitDeco_ar01.htm";
-		super.fnManageEtc = "data/html/clanHallManager/ol_mahum_AgitDeco_ae01.htm";
+		super.fnManageRegen = "data/html/clanHallManager/ol_mahum_agitdeco_ar01.htm";
+		super.fnManageEtc = "data/html/clanHallManager/ol_mahum_agitdeco_ae01.htm";
 	}
 }

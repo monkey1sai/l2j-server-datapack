@@ -55,7 +55,7 @@ public abstract class Steward extends AbstractNpcAI {
 	protected String fnNotEnoughAdena;
 	protected String fnNoAuthority;
 	protected String fnIsUnderSiege;
-	private static final String fnManage = "data/html/clanHallManager/ol_mahum_AgitDecoManage.htm";
+	private static final String fnManage = "data/html/clanHallManager/ol_mahum_agitdecomanage.htm";
 	private static final String fnWarehouse = "data/html/clanHallManager/agitwarehouse_b.htm";
 	private static final String fnDecoReset = "data/html/clanHallManager/agitresetdeco.htm";
 	private static final String fnAfterSetDeco = "data/html/clanHallManager/agitaftersetdeco.htm";
@@ -67,7 +67,7 @@ public abstract class Steward extends AbstractNpcAI {
 	protected String fnManageRegen;
 	protected String fnManageEtc;
 	
-	private static final String fnManageAgitDeco = "data/html/clanHallManager/ol_mahum_AgitDeco__";
+	private static final String fnManageAgitDeco = "data/html/clanHallManager/ol_mahum_agitdeco__";
 	private static final String fnDecoAlreadySet = "data/html/clanHallManager/agitdecoalreadyset.htm";
 	private static final String fnAfterBuff = "data/html/clanHallManager/agitafterbuff.htm";
 	private static final String fnNotEnoughMP = "data/html/clanHallManager/agitnotenoughmp.htm";

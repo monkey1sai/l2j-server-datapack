@@ -140,7 +140,7 @@ public class AzitChamberlain extends Steward {
 		super.fnNoAuthority = "data/html/clanHallManager/azit_chamberlain017.htm";
 		super.fnIsUnderSiege = "data/html/clanHallManager/azit_chamberlain018.htm";
 		
-		super.fnManageRegen = "data/html/clanHallManager/ol_mahum_AgitDeco_ar01.htm";
-		super.fnManageEtc = "data/html/clanHallManager/ol_mahum_AgitDeco_ae01.htm";
+		super.fnManageRegen = "data/html/clanHallManager/ol_mahum_agitdeco_ar01.htm";
+		super.fnManageEtc = "data/html/clanHallManager/ol_mahum_agitdeco_ae01.htm";
 	}
 }

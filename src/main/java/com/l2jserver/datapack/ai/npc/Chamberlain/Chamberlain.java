@@ -97,10 +97,10 @@ public abstract class Chamberlain extends AbstractNpcAI {
 	private static final String fnTooHighTaxRate = "data/html/chamberlain/castletoohightaxrate.htm";
 	private static final String fnNotEnoughTicket = "data/html/chamberlain/ssq_notenoughticket.htm";
 	private static final String fnNotDawnOrEvent = "data/html/chamberlain/ssq_notdawnorevent.htm";
-	private static final String fnManage = "data/html/chamberlain/chamberlain_CastletDecoManage.htm";
-	private static final String fnManageRegen = "data/html/chamberlain/chamberlain_CastleDeco_AR01.htm";
-	private static final String fnManageEtc = "data/html/chamberlain/chamberlain_CastleDeco_AE01.htm";
-	private static final String fnManageAgitDeco = "data/html/chamberlain/ol_mahum_CastleDeco__";
+	private static final String fnManage = "data/html/chamberlain/chamberlain_castletdecomanage.htm";
+	private static final String fnManageRegen = "data/html/chamberlain/chamberlain_castledeco_ar01.htm";
+	private static final String fnManageEtc = "data/html/chamberlain/chamberlain_castledeco_ae01.htm";
+	private static final String fnManageAgitDeco = "data/html/chamberlain/ol_mahum_castledeco__";
 	private static final String fnDecoReset = "data/html/chamberlain/castleresetdeco.htm";
 	private static final String fnAfterSetDeco = "data/html/chamberlain/castleaftersetdeco.htm";
 	private static final String fnAfterResetDeco = "data/html/chamberlain/castleafterresetdeco.htm";

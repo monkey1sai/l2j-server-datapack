@@ -146,7 +146,7 @@ public class ChamberlainBandello extends Steward {
 		super.fnNoAuthority = "data/html/clanHallManager/chamberlain_bandello017.htm";
 		super.fnIsUnderSiege = "data/html/clanHallManager/chamberlain_bandello018.htm";
 		
-		super.fnManageRegen = "data/html/clanHallManager/ol_mahum_AgitDeco_ar01.htm";
-		super.fnManageEtc = "data/html/clanHallManager/ol_mahum_AgitDeco_ae01.htm";
+		super.fnManageRegen = "data/html/clanHallManager/ol_mahum_agitdeco_ar01.htm";
+		super.fnManageEtc = "data/html/clanHallManager/ol_mahum_agitdeco_ae01.htm";
 	}
 }

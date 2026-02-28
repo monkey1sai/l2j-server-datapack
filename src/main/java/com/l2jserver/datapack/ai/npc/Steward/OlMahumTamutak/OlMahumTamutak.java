@@ -135,7 +135,7 @@ public class OlMahumTamutak extends Steward {
 		super.fnNoAuthority = "data/html/clanHallManager/ol_mahum_steward_tamutak017.htm";
 		super.fnIsUnderSiege = "data/html/clanHallManager/ol_mahum_steward_tamutak018.htm";
 		
-		super.fnManageRegen = "data/html/clanHallManager/ol_mahum_AgitDeco_br01.htm";
-		super.fnManageEtc = "data/html/clanHallManager/ol_mahum_AgitDeco_be01.htm";
+		super.fnManageRegen = "data/html/clanHallManager/ol_mahum_agitdeco_br01.htm";
+		super.fnManageEtc = "data/html/clanHallManager/ol_mahum_agitdeco_be01.htm";
 	}
 }

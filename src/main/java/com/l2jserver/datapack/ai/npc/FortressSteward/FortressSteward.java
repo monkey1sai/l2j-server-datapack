@@ -56,7 +56,7 @@ public abstract class FortressSteward extends AbstractNpcAI {
 	private static final String fnIsUnderSiege = "data/html/fortress/fortress_steward018.htm";
 	private static final String fnFortressInfo = "data/html/fortress/fortress_steward022.htm";
 	private static final String fnFortressInfoIndep = "data/html/fortress/fortress_steward023.htm";
-	private static final String fnManage = "data/html/fortress/ol_mahum_FortDecoManage.htm";
+	private static final String fnManage = "data/html/fortress/ol_mahum_fortdecomanage.htm";
 	private static final String fnWarehouse = "data/html/fortress/fortresswarehouse_b.htm";
 	private static final String fnDecoReset = "data/html/fortress/fortressresetdeco.htm";
 	private static final String fnAfterSetDeco = "data/html/fortress/fortressaftersetdeco.htm";
@@ -64,8 +64,8 @@ public abstract class FortressSteward extends AbstractNpcAI {
 	private static final String fnDecoFunction = "data/html/fortress/fortressdecofunction.htm";
 	private static final String fnFuncDisabled = "data/html/fortress/fortressfuncdisabled.htm";
 	private static final String fnAgitBuff = "data/html/fortress/fortressbuff";
-	private static final String fnManageRegen = "data/html/fortress/ol_mahum_FortDeco_AR01.htm";
-	private static final String fnManageEtc = "data/html/fortress/ol_mahum_FortDeco_AE01.htm";
+	private static final String fnManageRegen = "data/html/fortress/ol_mahum_fortdeco_ar01.htm";
+	private static final String fnManageEtc = "data/html/fortress/ol_mahum_fortdeco_ae01.htm";
 	private static final String fnManageAgitDeco = "data/html/fortress/ol_mahum_fortressdeco__";
 	private static final String fnDecoAlreadySet = "data/html/fortress/fortressdecoalreadyset.htm";
 	private static final String fnAfterBuff = "data/html/fortress/fortressafterbuff.htm";
