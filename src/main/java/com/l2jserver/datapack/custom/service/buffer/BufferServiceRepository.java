@@ -112,7 +112,7 @@ public final class BufferServiceRepository {
 	}
 	
 	private Map<Integer, UniqueBufflist> getPlayersULists(int playerObjectId) {
-		return uniqueBufflists.computeIfAbsent(playerObjectId, k -> new LinkedHashMap<>());
+		return uniqueBufflists.computeIfAbsent(playerObjectId, _ -> new LinkedHashMap<>());
 	}
 	
 	private UniqueBufflist getPlayersUList(int playerObjectId, String ulistName) {

@@ -55,7 +55,7 @@ public class XpHandler implements IVoicedCommandHandler {
 		switch (params) {
 			case "off" -> {
 				if (!xpGain) {
-					player.addListener(new FunctionEventListener(player, PLAYABLE_EXP_CHANGED, e -> new TerminateReturn(true, true, true), this));
+					player.addListener(new FunctionEventListener(player, PLAYABLE_EXP_CHANGED, _ -> new TerminateReturn(true, true, true), this));
 					player.getVariables().set("xp_gain", true);
 					player.sendMessage("Experience gain has been disabled. You will no longer earn XP until it is re-enabled.");
 				} else {

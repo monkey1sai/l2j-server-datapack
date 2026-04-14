@@ -226,7 +226,7 @@ public class Q00255_Tutorial extends Quest {
 		
 		if ((eventStatus & 8388608) != 0) {
 			if (!player.hasListener(PLAYER_SIT)) {
-				player.addListener(new ConsumerEventListener(player, PLAYER_SIT, (PlayerSit event) -> {
+				player.addListener(new ConsumerEventListener(player, PLAYER_SIT, (PlayerSit _) -> {
 					tutorialEvent(player, 8388608);
 				}, player));
 			}
