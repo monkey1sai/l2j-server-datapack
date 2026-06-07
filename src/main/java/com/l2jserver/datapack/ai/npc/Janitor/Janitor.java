@@ -37,13 +37,13 @@ public class Janitor extends AbstractNpcAI {
 	
 	private static final int[] npcIds = { 35385, 35387, 35389, 35391, 35393, 35395, 35397, 35399, 35401, 35402, 35404, 35406, 35440, 35442, 35444, 35446, 35448, 35450, 35452, 35454, 35456, 35458, 35460, 35462, 35464, 35466, 35468, 35567, 35569, 35571, 35573, 35575, 35577, 35579, 35581, 35583, 35585, 35587 };
 	
-	private static final String fnFeudInfo = "data/html/clanHallDoormen/defaultAgitInfo.htm";
-	private static final String fnNoFeudInfo = "data/html/clanHallDoormen/noAgitInfo.htm";
-	private static final String fnOwner = "data/html/clanHallDoormen/AgitJanitorHi.htm";
-	private static final String fnWyvernOwner = "data/html/clanHallDoormen/WyvernAgitJanitorHi.htm";
-	private static final String fnNoAuthority = "data/html/clanHallDoormen/noAuthority.htm";
-	private static final String fnAfterDoorOpen = "data/html/clanHallDoormen/AgitJanitorAfterDoorOpen.htm";
-	private static final String fnAfterDoorClose = "data/html/clanHallDoormen/AgitJanitorAfterDoorClose.htm";
+	private static final String fnFeudInfo = "data/html/clanHallDoormen/defaultagitinfo.htm";
+	private static final String fnNoFeudInfo = "data/html/clanHallDoormen/noagitinfo.htm";
+	private static final String fnOwner = "data/html/clanHallDoormen/agitjanitorhi.htm";
+	private static final String fnWyvernOwner = "data/html/clanHallDoormen/wyvernagitjanitorhi.htm";
+	private static final String fnNoAuthority = "data/html/clanHallDoormen/noauthority.htm";
+	private static final String fnAfterDoorOpen = "data/html/clanHallDoormen/agitjanitorafterdooropen.htm";
+	private static final String fnAfterDoorClose = "data/html/clanHallDoormen/agitjanitorafterdoorclose.htm";
 	
 	private static final String fnEvolutionSuccess = "data/html/clanHallDoormen/pet_evolution_success.htm";
 	private static final String fnEvolutionStopped = "data/html/clanHallDoormen/pet_evolution_stopped.htm";
